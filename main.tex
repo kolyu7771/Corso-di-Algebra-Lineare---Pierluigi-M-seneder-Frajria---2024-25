@@ -1,0 +1,35 @@
+\documentclass[a4paper]{extbook}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{circuitikz}
+\usepackage{amsfonts,amsmath,amssymb,mathtools}
+\usepackage{fancyhdr}
+\usepackage[explicit]{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage[italian]{babel}
+\usepackage{bm}
+\usepackage{graphicx} % Required for inserting images
+\usetikzlibrary{external}
+\tikzexternalize[prefix=immagini/]
+
+\input{definizioni.tex}
+
+\title{Corso di Algebra Lineare - Pierluigi Möseneder Frajria - 2024/25}
+\author{Jusef Azzolina}
+\date{}
+
+\begin{document}
+\tikzset{external/export=false, external/optimize=false}
+\maketitle
+
+\input{introduzione.tex}
+
+\tableofcontents
+
+\part{Parte computazionale: Vettori e matrici}
+
+\input{vettori_matrici.tex}
+
+\input{determinante.tex}
+
+\end{document}

@@ -1,0 +1,678 @@
+\chapter{Vettori e matrici}
+\section{$n$-vettori}
+L'elemento fondamentale del corso di Algebra Lineare è il \textbf{vettore}. Invece di dare subito una definizione esatta e precisa del vettore, conviene iniziare facendosi un'idea di cos'è \textit{operativamente} un vettore.
+\begin{newdef}{$n$-vettori}
+    Un $n$-vettore è una $n$-upla di numeri reali. Per esempio:
+    \begin{center}
+        $(0,2)$ è un 2-vettore \\
+        (1,$\pi$,4) è un 3-vettore
+    \end{center}
+\end{newdef}
+Generalmente i vettori vengono chiamati con lettere minuscole in grassetto (es. \textbf{v}, \textbf{w}), con lettere minuscole con sopra un segno o una freccia (es. $\vec v$, $\vec w$) o semplicemente come lettere minuscole (es. $v$, $w$).
+
+Può venire in mente perché usare i vettori. I vettori trovano molti utilizzi in diversi campi: dalla matematica pura alla fisica, passando per machine learning, i vettori sono fondamentali per \textit{rappresentare dati} e \textit{modellare problemi}. Questo ultimo aspetto verrà ripreso più avanti.
+
+Per lavorare su questi vettori verranno definite le operazioni di \textbf{somma} e \textbf{prodotto con scalare}.
+\begin{newdef}{Somma tra $\bm{n}$-vettori}
+    Dati due $n$-vettori:
+    \[
+        \textbf{v} = (v_1,\dots,v_n) \quad \textbf{w} = (w_1,\dots,w_n)
+    \]
+    La somma \textbf{v + w} è l'$n$-vettore i cui elementi sono:
+    \[
+        \textbf{v + w} = (v_1 + w_1, \dots, v_n + w_n)
+    \]
+\end{newdef}
+\begin{nb}
+    L'operazione di somma tra $n$-vettori è ben definita se e solo se i due vettori hanno lo stesso numero di elementi.
+\end{nb}
+\begin{esempio}
+    \textbf{Calcolare la seguente somma:}
+    \[
+        (3, 5, 9, 1) + (2, 3, 1, 1)
+    \]
+    Usando la definizione di somma tra $n$-vettori è facile trovare che:
+    \[
+        (3 + 2, 5 + 3, 9 + 1, 1 + 1) = (5, 8, 10, 2)
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Calcolare le seguenti somme tra $n$-vettori}:\\
+    $(5,0,-2,3) + (-1, -1, 0, 4)$;
+
+    $(7, 4, 2) + (-1, 5, 6)$;
+
+    $(9, 5, 2, 4, 2, 2) + (7, 7, 4, 2, 9, 1)$;
+\end{exer}
+\begin{newdef}{Prodotto di un $n$-vettore con uno scalare}
+    Dato un numero reale $t$ e un $n$-vettore:
+    \[
+        \textbf{v} = (v_1, \dots, v_n)
+    \]
+    Il prodotto $t\textbf{v}$ è l'$n$-vettore i cui elementi sono:
+    \[
+        t\textbf{v} = (tv_1, \dots, tv_n)
+    \]
+\end{newdef}
+\begin{esempio}
+    \textbf{Calcolare il seguente prodotto con scalare:}
+    \[
+        4(7, 4, 2, 0, 11)
+    \]
+    Usando la definizione di prodotto di un $n$-vettore con scalare è facile trovare che:
+    \[
+        (4 \cdot 7, 4 \cdot 4, 4 \cdot 2, 4 \cdot 0, 4 \cdot 11) = (28, 16, 8, 0, 44)
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Calcolare i seguenti prodotti di $n$-vettori con scalari}:\\
+    $2(2, 4, 0, 1)$;
+
+    $\frac{1}{2}(2, 7, 7, 1, 4)$;
+
+    $e(\pi, \frac{5}{e}, 7, \sqrt{2})$;
+\end{exer}
+Esiste un vettore particolare che merita una definizione a sé, ovvero il \textbf{vettore nullo}.
+\begin{newdef}{Vettore nullo}
+    L'$n$-vettore i cui elementi sono tutti 0 è detto \textbf{vettore nullo}, ed è indicato con $\vec 0$.
+    \[
+        \vec 0 = (\underbrace{0,\dots,0}_\textrm{$n$ zeri})
+    \]
+\end{newdef}
+Le operazioni di somma e prodotto con scalare, per come sono state appena definite, rispettano 8 proprietà fondamentali, che sono analoghe a quelle con cui si è già familiari nei numeri reali:
+\begin{teo}{Proprietà delle operazioni sugli $n$-vettori}
+    \begin{enumerate}
+        \item Proprietà commutativa della somma: \\
+              $\textbf{v + w} = \textbf{w + v}$
+
+        \item Proprietà associativa della somma: \\
+              $\textbf{v + (w + u) = (v + w) + u}$
+
+        \item Esistenza dell'elemento nullo: \\
+              $\exists \vec 0 : \textbf{v +} \vec 0 = \vec 0 + \textbf{v} = \textbf{v}$
+
+        \item Esistenza dell'elemento inverso: \\
+              $\forall \textbf{v} \; \exists (-\textbf{v}) : \textbf{v +}(-\textbf{v}) = (-\textbf{v}) + \textbf{v} = \vec 0$
+
+        \item Proprietà distributiva dello scalare: \\
+              $t(\textbf{v} + \textbf{w}) = t\textbf{v} + t\textbf{w}$
+
+        \item Proprietà distributiva del vettore: \\
+              $\textbf{v}(t + s) = t\textbf{v} + s\textbf{v}$
+
+        \item Associatività mista: \\
+              $(ts)\textbf{v} = t(s\textbf{v})$
+
+        \item Legge di unità: \\
+              $1 \cdot \textbf{v} = \textbf{v}$
+    \end{enumerate}
+\end{teo}
+Ci si può chiedere come mai non si è ancora definita un'operazione di prodotto tra $n$-vettori; la definizione di una (o più) operazione di prodotto è un argomento più avanzato e non è ancora necessario.
+
+Alcuni avranno già notato che gli $n$-vettori non sono altro che elementi di un prodotto cartesiano: infatti, generalmente, non ci si riferisce agli $n$-vettori così, ma si chiamano \textbf{vettori in $\bm{\mathbb{R}^n}$}.
+
+\section{Matrici}
+Evidentemente i vettori, per quanto siano utili, sono di per sé limitati. Una possibile estensione del concetto di vettore e la \textbf{matrice}.
+
+\begin{newdef}{Matrice}
+    Una \textbf{matrice} $n \times m$ è una tabella di $n$ righe e $m$ colonne i cui elementi sono numeri reali. È indicata con:
+    \[
+        A =
+        \begin{sqmatrix}{c c c c}
+            a_{11} & a_{12} & \dots & a_{1m} \\
+            a_{21} & a_{22} & \dots & a_{2m} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nm}
+        \end{sqmatrix}
+    \]
+
+    L'elemento generico di $A$ è indicato con $a_{ij}$, dove $i$ è la riga e $j$ è la colonna.
+\end{newdef}
+\begin{nb}
+    Un vettore non è altro che una matrice $1 \times n$ (vettore riga) o $n \times 1$ (vettore colonna).
+\end{nb}
+Generalmente le matrici vengono indicate con lettere maiuscole dell'alfabeto latino.
+
+Le matrici sono quindi un'estensione dei vettori in una seconda dimensione: invece di avere $n$ elementi ``in fila``, si hanno $nm$ elementi in tabella.
+
+Le matrici sono uno strumento fondamentale che verrà incontrato di nuovo con lo studio dei sistemi di equazioni lineari e, poi, delle trasformazioni lineari. Purtroppo, molte delle cose che verranno stabilite, definite e spiegate qui acquisiranno un significato più profondo solo con l'introduzione di tali argomenti.
+
+Si possono identificare diverse matrici \textit{particolari}. Iniziamo con quelle più importanti.
+\begin{newdef}{Matrice nulla}
+    Una matrice $n \times m$ i cui elementi sono tutti nulli è detta \textbf{matrice nulla}, ed è indicata con:
+    \[
+        0_{n,m} =
+        \begin{sqmatrix}{c c c c}
+            0 & 0 & \dots & 0 \\
+            0 & 0 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & 0
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{newdef}{Matrice identità}
+    La \textbf{matrice identità} è una matrice $n \times n$ i cui elementi sulla diagonale sono 1 e tutti gli altri sono 0. È indicata con:
+    \[
+        I_n =
+        \begin{sqmatrix}{c c c c}
+            1 & 0 & \dots & 0 \\
+            0 & 1 & \dots & 0 \\
+            \vdots & \vdots & \ddots & 0 \\
+            0 & 0 & \dots & 1
+        \end{sqmatrix}
+    \]
+\end{newdef}
+In generale una matrice $n \times n$ è detta \textbf{matrice quadrata di ordine $\bm{n}$}; inoltre, con diagonale, si intende l'insieme di elementi $a_{ii}$ per qualsiasi $A$ di dimensione $n \times m$.
+
+Poi ci sono matrici la cui particolarità non ha a che fare con i loro valori precisi, ma per la loro disposizione.
+\begin{newdef}{Matrici triangolari e diagonali}
+    Una matrice è detta \textbf{triangolare superiore} se tutti gli elementi sotto la diagonale (esclusa) sono nulli:
+    \[
+        A =
+        \begin{sqmatrix}{c c c c c}
+            * & * & * &\dots & * \\
+            0 & * & * & \dots & * \\
+            0 & 0 & * & \dots & * \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \dots & *
+        \end{sqmatrix}
+    \]
+    Una matrice è detta \textbf{triangolare inferiore} se tutti gli elementi sopra la diagonale (esclusa) sono nulli:
+    \[
+        A =
+        \begin{sqmatrix}{c c c c c}
+            * & 0 & 0 &\dots & 0 \\
+            * & * & 0 & \dots & 0 \\
+            * & * & * & \dots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            * & * & * & \dots & *
+        \end{sqmatrix}
+    \]
+    Una matrice è detta \textbf{diagonale} se tutti gli elementi che non sono sulla diagonale sono nulli:
+    \[
+        A =
+        \begin{sqmatrix}{c c c c c}
+            * & 0 & 0 &\dots & 0 \\
+            0 & * & 0 & \dots & 0 \\
+            0 & 0 & * & \dots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \dots & *
+        \end{sqmatrix}
+    \]
+\end{newdef}
+È possibile, e spesso, come si vedrà tra poco, utile, ricavare delle matrici più piccole togliendo da una matrice delle righe e delle colonne.
+\begin{newdef}{Sottomatrici e minori}
+    Una \textbf{sottomatrice} è una matrice ricavata togliendo delle righe e delle colonne.
+
+    Un \textbf{minore} è una sottomatrice quadrata.
+\end{newdef}
+\begin{nb}
+    Non è possibile creare una sottomatrice scegliendo elementi a caso, ma è necessario eliminare \textbf{intere righe/colonne}.
+\end{nb}
+
+Inoltre, nei calcoli, è utile vedere una matrice più grande come una ``matrice di sottomatrici''.
+
+\begin{newdef}{Matrice a blocchi}
+    Una \textbf{matrice a blocchi} è una matrice suddivisa in più sottomatrici per comodità.
+    \[
+        A =
+        \begin{sqmatrix}{c c | c c c}
+            1 & 2 & 0 & 0 & 0 \\
+            2 & 0 & 0 & 0 & 0 \\
+            \hline
+            0 & 0 & 5 & 1 & 2 \\
+            0 & 0 & 7 & 4 & 2 \\
+            0 & 0 & 8 & 0 & 12
+        \end{sqmatrix}
+        =
+        \begin{sqmatrix}{c c}
+            M_2 & 0_{2,3} \\
+            0_{3,2} & M_3
+        \end{sqmatrix}
+    \]
+\end{newdef}
+
+Essendo le matrici un'estensione dei vettori in una seconda dimensione, ha senso ridefinire le stesse operazioni di somma e prodotto con scalare in maniera analoga ai vettori.
+\begin{newdef}{Somma tra matrici}
+    Date due matrici $n \times m$:
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            a_{11} & \dots & a_{1m} \\
+            \vdots & \ddots & \vdots \\
+            a_{n1} & \dots & a_{nm}
+        \end{sqmatrix}
+        \quad
+        B =
+        \begin{sqmatrix}{c c c}
+            b_{11} & \dots & b_{1m} \\
+            \vdots & \ddots & \vdots \\
+            b_{n1} & \dots & b_{nm}
+        \end{sqmatrix}
+    \]
+    La somma $A + B$ è la matrice $n \times m$ i cui elementi sono:
+    \[
+        A + B =
+        \begin{sqmatrix}{c c c}
+            a_{11} + b_{11} & \dots & a_{1m} + b_{1m} \\
+            \vdots & \ddots & \vdots \\
+            a_{n1} + b_{nm} & \dots & a_{nm} + b_{nm}
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{nb}
+    L'operazione di somma tra matrici è ben definita se e solo se entrambe hanno la stessa dimensione (stesso numero di righe e stesso numero di colonne).
+\end{nb}
+\begin{esempio}
+    \textbf{Calcolare la seguente somma:}
+    \[
+        \begin{sqmatrix}{c c c}
+            3 & 12 & 4 \\
+            0 & 2 & 7
+        \end{sqmatrix}
+        +
+        \begin{sqmatrix}{c c c}
+            1 & 2 & 7 \\
+            2 & 0 & 2
+        \end{sqmatrix}
+    \]
+    Usando la definizione di somma tra matrici è facile trovare che:
+    \[
+        \begin{sqmatrix}{c c c}
+            3 + 1 & 12 + 2 & 4 + 7 \\
+            0 + 2 & 2 + 0 & 7 + 2
+        \end{sqmatrix}
+        =
+        \begin{sqmatrix}{c c c}
+            4 & 14 & 11 \\
+            2 & 2 & 9
+        \end{sqmatrix}
+    \]
+\end{esempio}
+\begin{exer}
+    \label{sommamat}
+    \textbf{Calcolare le seguenti somme tra matrici}:\\
+    $
+        \begin{sqmatrix}{c c c c}
+            5 & 2 & 4 & 3 \\
+            2 & 7 & 0 & 1
+        \end{sqmatrix}
+        +
+        \begin{sqmatrix}{c c c c}
+            1 & -1 & 2 & 1 \\
+            9 & 2 & 8 & 3
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            12 & 7 & \frac{3}{2} \\
+            8 & 2 & 11 \\
+            21 & 0 & 0
+        \end{sqmatrix}
+        +
+        \begin{sqmatrix}{c c c}
+            8 & 1 & \frac{1}{2} \\
+            2 & 2 & 2 \\
+            0  & 2 & 0
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c}
+            6 & 15 \\
+            19 & 2 \\
+            7 & 9
+        \end{sqmatrix}
+        +
+        \begin{sqmatrix}{c c}
+            8 & 1 \\
+            1 & 0 \\
+            10 & 21
+        \end{sqmatrix}
+    $;
+\end{exer}
+\begin{newdef}{Prodotto di una matrice con uno scalare}
+    Dato un numero reale $t$ e una matrice $n \times m$:
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            a_{11} & \dots & a_{1m} \\
+            \vdots & \ddots & \vdots \\
+            a_{n1} & \dots & a_{nm}
+        \end{sqmatrix}
+    \]
+    Il prodotto $tA$ è la matrice $n \times m$ i cui elementi sono:
+    \[
+        tA =
+        \begin{sqmatrix}{c c c}
+            ta_{11} & \dots & ta_{1m} \\
+            \vdots & \ddots & \vdots \\
+            ta_{n1} & \dots & ta_{nm}
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{esempio}
+    \textbf{Calcolare il seguente prodotto con scalare:}
+    \[
+        6
+        \begin{sqmatrix}{c c}
+            2 & 0 \\
+            10 & 7 \\
+            9 & 7
+        \end{sqmatrix}
+    \]
+    Usando la definizione di prodotto di una matrice con uno scalare è facile trovare che:
+    \[
+        \begin{sqmatrix}{c c}
+            6 \cdot 2 & 6 \cdot 0 \\
+            6 \cdot 10 & 6 \cdot 7 \\
+            6 \cdot 9 & 6 \cdot 7
+        \end{sqmatrix}
+        =
+        \begin{sqmatrix}{c c}
+            12 & 0 \\
+            20 & 42 \\
+            54 & 42
+        \end{sqmatrix}
+    \]
+\end{esempio}
+\begin{exer}
+    \label{prodscalmat}
+    \textbf{Calcolare i seguenti prodotti di matrici con scalari}:\\
+    $5
+        \begin{sqmatrix}{c c c}
+            2 & 2 & 8 \\
+            10 & -1 & 0 \\
+            3 & 3 & 7
+        \end{sqmatrix}
+    $;
+
+    $\frac{3}{4}
+        \begin{sqmatrix}{c c c c}
+            5 & 2 & 3 & 2 \\
+            0 & 1 & \frac{4}{5} & 2
+        \end{sqmatrix}
+    $;
+
+    $3
+        \begin{sqmatrix}{c c}
+            e & 8  \\
+            2 & 4 \\
+            \sqrt{2} & \pi \\
+            5 & 3 \\
+            3 & 0
+        \end{sqmatrix}
+    $;
+\end{exer}
+
+Anche le operazioni appena definite sulle matrici rispettano le stesse proprietà delle operazioni suoi vettori.
+\begin{teo}{Proprietà delle operazioni sulle matrici}
+    \begin{enumerate}
+        \item Proprietà commutativa della somma: \\
+              $A + B = B + A$
+
+        \item Proprietà associativa della somma: \\
+              $A + (B + C) = (A + B) + C$
+
+        \item Esistenza dell'elemento nullo: \\
+              $\exists 0 : A + 0 = 0 + A = A$
+
+        \item Esistenza dell'elemento inverso: \\
+              $\forall A\;\exists (-A) : A + (-A) = (-A) + A = 0$
+
+        \item Proprietà distributiva dello scalare: \\
+              $t(A + B) = tA + tB$
+
+        \item Proprietà distributiva della matrice: \\
+              $A(t + s) = tA + sA)$
+
+        \item Associatività mista: \\
+              $(ts)A = t(sA)$
+
+        \item Legge di unità: \\
+              $1 \cdot A = A$
+    \end{enumerate}
+\end{teo}
+
+Al contrario dei vettori, in questo caso verrà definita un'operazione di prodotto tra matrici. Tale operazione, però, non avrà la definizione che ci si può aspettare.
+
+\begin{newdef}{Prodotto riga per colonna}
+    Date due matrici $A$ $n \times m$ e $B$ $m \times s$, la matrice $AB$ sarà una matrice  $n \times s$ i cui elementi $c_{ij}$ saranno:
+    \[
+        c_{ij} = \sum_{k = 1}^m a_{ik}b_{kj}
+    \]
+    Due matrici $n \times m$ e $m \times s$, ovvero tali che la prima matrice ha lo stesso numero di colonne del numero di righe della seconda, sono dette \textbf{conformabili}.
+\end{newdef}
+\begin{nb}
+    Il prodotto riga per colonna \textbf{non è} commutativo.
+\end{nb}
+\begin{esempio}
+    \textbf{Calcolare il seguente prodotto riga per colonna:}
+    \[
+        \begin{sqmatrix}{c c}
+            4 & 6 \\
+            7 & 5
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c c}
+            -5 & -1 & 2 \\
+            2 & 4 & -4
+        \end{sqmatrix}
+    \]
+    La prima matrice ha 2 colonne e la seconda ha due righe, quindi il prodotto riga per colonna è possibile. Dalla definizione di prodotto riga per colonna, si ha:
+    \[
+        \begin{sqmatrix}{c c c}
+            4 \cdot (-5) + 6 \cdot 2 & 4 \cdot (-1) + 6 \cdot 4 & 4 \cdot 2 + 4 \cdot (-4) \\
+            7 \cdot (-5) + 5 \cdot 2 & 7 \cdot (-1) + 5 \cdot 4 & 7 \cdot 2 + 5 \cdot (-4)
+        \end{sqmatrix}
+        =
+    \]
+    \[
+        =
+        \begin{sqmatrix}{c c c}
+            -8 & 20 & 16 \\
+            -25 & 13 & -6
+        \end{sqmatrix}
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Calcolare, quando possibile, i seguenti prodotti riga per colonna:}
+
+    $
+        \begin{sqmatrix}{c c c}
+            3 & 4 & 2 \\
+            2 & 5 & 2
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c}
+            6 & 9 \\
+            1 & 1 \\
+            2 & 5
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            5 & 3 & 8 \\
+            2 & 8 & 9 \\
+            9 & 3 & 5
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c}
+            3 & 5 \\
+            1 & 0
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c}
+            8 & 2 \\
+            5 & 10
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c}
+            5 & 9 \\
+            11 & 0
+        \end{sqmatrix}
+    $;
+\end{exer}
+\begin{exer}
+    \textbf{Dimostrare che, date due matrici $\bm{n \times n}$ $\bm{A}$ e $\bm{B}$, il prodotto riga per colonna $\bm{AB}$ può essere diverso da $\bm{BA}$.}
+\end{exer}
+Il motivo di questa definizione particolare verrà reso più chiaro con l'introduzione dei sistemi lineari e delle trasformazioni lineari.
+
+L'operazione di prodotto riga per colonna rispetta delle proprietà un po' diverse da quelle precedenti.
+\begin{teo}{Proprietà prodotto riga per colonna}
+    Supponendo che tutti i prodotti riga per colonna siano possibili:
+    \begin{enumerate}
+        \item Proprietà associativa: \\
+              $A(BC) = (AB)C$
+
+        \item Proprietà distributiva da sinistra: \\
+              $A(B + C) = AB + AC$
+
+        \item Proprietà distributiva da destra: \\
+              $(A + B)C = AC + BC$
+
+        \item Associatività mista: \\
+              $(tA)B = A(tB) = t(AB)$
+
+        \item Esistenza elemento neutro: \\
+              Dato $A$ $n\times m$ $I_nA = AI_m = A$
+    \end{enumerate}
+\end{teo}
+
+Le matrici quadrate di ordine $n$ sono sempre conformabili tra loro e, in particolare, sono conformabili con \textbf{se stesse}. Quindi ha senso definire la \textbf{potenza} di una matrice quadrata.
+
+\begin{newdef}{Potenza di una matrice quadrata}
+    Se $A$ è una matrice quadrata, allora si può definire l'$n$-esima potenza di $A$ come:
+    \[
+        A^n = \underbrace{A \cdot A \cdot \dots \cdot A}_\textrm{$n$ volte}
+    \]
+\end{newdef}
+Valgono tutte le proprietà delle potenze riguardanti il prodotto. Il concetto di ``divisione'' non appartiene propriamente alle matrici.
+\begin{nb}
+    Per la proprietà associativa del prodotto riga per colonna si ha:
+    \[
+        A^{m + n} = A^m A^n = A^n A^m
+    \]
+\end{nb}
+\begin{esempio}
+    \textbf{Data la matrice $\bm{A}$ di ordine 3, calcolare $\bm{A^2}$, $\bm{A^3}$ e $\bm{A^{10}}$}
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+    \]
+    Si inizia con il calcolo di $A^2$:
+    \[
+        A^2 = A \cdot A =
+        \begin{sqmatrix}{c c c}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c c}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+        =
+        \begin{sqmatrix}{c c c}
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+    \]
+    Poi, per le proprietà delle potenze, si può vedere $A^3 = A^2 \cdot A$:
+    \[
+        A^3 =
+        \begin{sqmatrix}{c c c}
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+        \begin{sqmatrix}{c c c}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+        =
+        \begin{sqmatrix}{c c c}
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+    \]
+    Sempre per le proprietà delle potenze si ha che $\forall n > 3$ $A^n = A^3 \cdot A^{n - 3}$, e perciò:
+    \[
+        A^n =
+        \begin{sqmatrix}{c c c}
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{sqmatrix}
+    \]
+    Il che vale anche per $n = 10$.
+\end{esempio}
+\begin{exer}
+    \textbf{Per ogni matrice presentata, calcolarne il quadrato e il cubo:}
+
+    $
+        \begin{sqmatrix}{c c}
+            2 & 7 \\
+            2 & 3
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c}
+            3 & -2 \\
+            2 & -1
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            5 & 4 & 5 \\
+            3 & 0 & 1 \\
+            5 & 2 & 2
+        \end{sqmatrix}
+    $;
+\end{exer}
+
+Infine è utile dare la definizione di \textbf{trasposta} di una matrice.
+\begin{newdef}{Trasposta}
+    La \textbf{trasposta} di una matrice $A$ $n \times m$ è la matrice $m \times n$ le cui righe sono le colonne di $A$ e viceversa. La si indica con $A^T$, o con $\prescript{t}{}{A}$ o $A'$ in testi più vecchi.
+\end{newdef}
+L'operazione di trasposizione di una matrice ha le seguenti proprietà:
+\begin{teo}{Proprietà della trasposta}
+    \begin{enumerate}
+        \item $(A + B)^T = A^T + B^T$;
+        \item $(A^T)^T = A$;
+        \item $(sA)^T = sA^T$;
+        \item $(AB)^T = B^T A^T$;
+    \end{enumerate}
+\end{teo}
+Con l'introduzione della trasposta si introduce anche il concetto di matrici \textbf{simmetriche} e \textbf{antisimmetriche}.
+\begin{newdef}{Matrici simmetriche ed antisimmetriche}
+    Una matrice è \textbf{simmetrica} se è uguale alla sua trasposta: $A = A^T$.
+
+    Una matrice è \textbf{antisimmetrica}, o \textbf{emisimmetrica}, se è uguale all'opposto della sua trasposta: $A = -A^T$.
+\end{newdef}
+\begin{nb}
+    Una matrice è antisimmetrica se gli elementi sulla sua diagonale sono tutti nulli.
+\end{nb}
+
+\section{Operazioni elementari di riga}
+Uno strumento molto potente che si userà molto spesso è la \textit{riduzione a gradini} di una matrice tramite il \textbf{metodo di eliminazione di Gauss (MEG)}.
+
+Però, prima di introdurre l'argomento, che tornerà utile a partire dalla risoluzione di sistemi lineari, sarà necessario introdurre le \textit{operazioni elementari di riga}. La definizione propria di operazioni elementari di riga sarà introdotta più tardi, però vale la pena introdurle adesso.
+\begin{newdef}{Operazioni elementari di riga (1)}
+    Ci sono 3 \textbf{operazioni elementari di riga}:
+    \begin{enumerate}
+        \item \textbf{Scambio} di due righe;
+        \item \textbf{Prodotto con scalare} di una riga;
+        \item \textbf{Somma} tra multipli di due righe.
+    \end{enumerate}
+\end{newdef}

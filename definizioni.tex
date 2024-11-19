@@ -1,0 +1,116 @@
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyfoot[C]{-~\thepage~-}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{Capitolo \thechapter\ -\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\newcommand{\chapterheader}[1]{
+	\begin{tikzpicture}[baseline=(current bounding box.north), remember picture, overlay]
+		\filldraw[Red] (0,0) rectangle (2,2);
+		\filldraw[Maroon] (0,0) -- (0.5,-0.5) -- (0.5,0);
+		\node[white, font=\Huge\bfseries] at (1,1) {\thechapter};
+		\filldraw[Red] (2,2) rectangle (\textwidth, 1);
+		\filldraw[Maroon] (\textwidth,2) -- (\textwidth - 0.5cm,2.5) -- (\textwidth-0.5cm,1.5) -- (\textwidth,1);
+		\node[anchor=west, white, font=\Large\bfseries] at (2,1.5) {#1};
+	\end{tikzpicture}
+}
+
+\newcommand{\sectionheader}[1]{
+	\begin{tikzpicture}[baseline=(current bounding box.north), remember picture, overlay]
+		\filldraw[Emerald] (0,0) rectangle (1.5,0.5);
+		\node[white, font=\large\bfseries] at (0.75,0.25) {\thesection};
+		\node[anchor=west, Red, font=\large\bfseries] at (1.5,0.25) {#1};
+	\end{tikzpicture}
+}
+
+\titleformat{\chapter}[display]
+  {\sffamily\Huge\bfseries}
+  {}
+  {0pt} % Spaziatura tra etichetta e titolo
+  {
+    \vspace{-4cm}
+    \chapterheader{#1}
+  }
+  
+\titleformat{name=\chapter,numberless}[display]
+  {\sffamily\Huge\bfseries}
+  {}
+  {0pt} % Spaziatura tra etichetta e titolo
+  {#1}
+
+  \titleformat{\section}[display]
+  {\sffamily\Large\bfseries}
+  {}
+  {0pt} % Spaziatura tra etichetta e titolo
+  {
+    \vspace{-0.75cm}
+    \sectionheader{#1}
+  }
+
+\tcbset{MyStyle/.style={
+    tile,
+    breakable,
+    rounded corners=downhill,
+    drop fuzzy shadow = Blue,
+    arc=4mm,
+    fonttitle=\bfseries\sffamily
+}}
+
+\newtcolorbox[auto counter, number within=section]{teo}[1]{
+    MyStyle,
+    colback=Purple!15!white,
+    colbacktitle=Purple!85!white,
+    title = Teorema \thetcbcounter: #1
+}
+
+\newtcolorbox{newdef}[1]{
+    MyStyle,
+    colback=Blue!15!white,
+    colbacktitle=Blue!85!white,
+    title = Definizione: #1
+}
+
+\newtcolorbox{nb}{
+    MyStyle,
+    colback=Red!15!white,
+    colbacktitle=Red!85!white,
+    title = Nota bene!
+}
+
+\newtcolorbox[auto counter, number within=section]{exer}{
+    MyStyle,
+    colback=Orange!15!white,
+    colbacktitle=Orange!85!white,
+    title = Esercizio \thetcbcounter
+}
+
+\newtcolorbox[auto counter, number within=section]{esempio}{
+    MyStyle,
+    colback=Magenta!15!white,
+    colbacktitle=Magenta!85!white,
+    title = Esempio \thetcbcounter
+}
+
+\newtcolorbox{newdim}{
+    MyStyle,
+    colback=Green!15!white,
+    colbacktitle=Green!85!white,
+    title = Dimostrazione
+}
+
+\newenvironment{sqmatrix}
+{\left[\begin{array}}
+{\end{array}\right]}
+
+\newcommand{\tikzextstart}{\tikzset{external/export=true}\begin{tikzpicture}}
+\newcommand{\tikzextend}{\end{tikzpicture}\tikzset{external/export=false}}

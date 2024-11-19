@@ -1,0 +1,248 @@
+\chapter{Determinante e inversa}
+\section{Definizione}
+La definizione di determinante è una difficile da dare in questo momento, come è difficile in questo momento rendersi conto di quanto sia uno strumento potente. Una definizione adeguata di determinante, a questo punto, sarebbe la seguente:
+\begin{newdef}{Determinante}
+    Il \textbf{determinante} è un valore caratteristico di una matrice \textit{quadrata}, che ne esprime diverse proprietà algebriche e geometriche.
+
+    Lo si indica con:
+    \[
+        \det A \text{ o } |A|
+    \]
+\end{newdef}
+La definizione, come facile notare, è abbastanza vaga. ``In che senso è un \textit{valore caratteristico}?''; ``Quali proprietà esprime? Come?''.
+
+Purtroppo le risposte a queste domande riceveranno risposta solo più avanti.
+
+\section{Determinanti di matrici di ordine 1, 2 e 3}
+Il determinante di una matrice $1 \times 1$ è banale.
+
+\begin{teo}{Determinante di una matrice di ordine 1}
+    Il determinante di una matrice di ordine 1 è l'unico elemento della matrice.
+    \[
+        \det[a] = a
+    \]
+\end{teo}
+
+Invece il determinante di una matrice $2 \times 2$ ha una leggermente formula più complessa:
+\begin{teo}{Determinante di una matrice di ordine 2}
+    Il determinante di una matrice di ordine 2 è la differenza tra il prodotto degli elementi sulla diagonale discendente (\textit{diagonale principale})e il prodotto degli elementi sulla diagonale ascendente (\textit{antidiagonale}).
+    \[
+        \det
+        \begin{sqmatrix}{c c}
+            a & b \\
+            c & d
+        \end{sqmatrix}
+        = ad - bc
+    \]
+\end{teo}
+\begin{esempio}
+    \textbf{Calcolare il determinante della seguente matrice di ordine 2:}
+    \[
+        A =
+        \begin{sqmatrix}{c c}
+            6 & 3 \\
+            7 & 6
+        \end{sqmatrix}
+    \]
+    Utilizzando la formula proposta qua sopra si ottiene:
+    \[
+        \det A = 6 \cdot 6 - 3 \cdot 7 = 36 - 21 = 15
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Calcolare il determinante delle seguenti matrici di ordine 2:}
+
+    $
+        \begin{sqmatrix}{c c}
+            4 & 2 \\
+            4 & 0
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c}
+            3 & 0 \\
+            1 & 3
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c}
+            3 & 9 \\
+            5 & 15
+        \end{sqmatrix}
+    $;
+\end{exer}
+
+Quando si arriva all'ordine 3 la formula si complica ancora di più:
+\begin{multline*}
+    \det
+    \begin{sqmatrix}{c c c}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33} \\
+    \end{sqmatrix}
+    = a_{11}a_{22}a_{33} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} \\ - a_{13}a_{22}a_{31} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}
+\end{multline*}
+Ovviamente ricordarsi una formula del genere è improponibile. Fortunatamente esiste un metodo di calcolo del determinante di una matrice $3 \times 3$ relativamente semplice.
+
+\begin{teo}{Regola di Sarrus}
+    Per calcolare il determinante di una matrice di ordine 3 la si riscrive, aggiungendo dopo l'ultima colonna le prime due, e sommando i prodotti sulle 3 diagonali discendenti e sottraendo i prodotti sulle 3 diagonali ascendenti.
+    \begin{center}
+        \tikzset{external/export=true}
+        \begin{tikzpicture}
+            \foreach \i [evaluate=\i as \ip using int(\i+1)] in {0,1,2}{
+                    \foreach \j [evaluate=\j as \jp using int(-\j+1)] in {0,-1,-2}{
+                            \node at (\i,\j) {$a_{\ip \jp}$};
+                        }
+                }
+            \foreach \i [evaluate=\i as \ip using int(\i-2)] in {3,4}{
+                    \foreach \j [evaluate=\j as \jp using int(-\j+1)] in {0,-1,-2}{
+                            \node at (\i,\j) {$a_{\ip \jp}$};
+                        }
+                }
+            \foreach \i/\j in {0.5/-0.5,1.5/-0.5,1.5/-1.5,2.5/-0.5,2.5/-1.5,3.5/-1.5}{
+                    \node at (\i,\j) {$\searrow$};
+                }
+            \foreach \i/\j in {0.5/-1.5,1.5/-0.5,1.5/-1.5,2.5/-0.5,2.5/-1.5,3.5/-0.5}{
+                    \node at (\i,\j) [Red] {$\nearrow$};
+                }
+        \end{tikzpicture}
+        \tikzset{external/export=false}
+    \end{center}
+    \[
+        a_{11}a_{22}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} \textcolor{Red}{- a_{13}a_{22}a_{31} - a_{23}a_{32}a_{11} - a_{33}a_{12}a_{21}}
+    \]
+\end{teo}
+\begin{esempio}
+    \textbf{Calcolare il determinante della seguente matrice di ordine 3:}
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            1 & 0 & 2 \\
+            1 & 6 & 0 \\
+            0 & 7 & 2
+        \end{sqmatrix}
+    \]
+    Usando la regola di Sarrus si ottiene:
+    \[
+        \det A = 1 \cdot 6 \cdot 2 + 0 \cdot 0 \cdot 0 + 2 \cdot 1 \cdot 7 - 0 \cdot 6 \cdot 2 - 7 \cdot 0 \cdot 1 - 2 \cdot 1 \cdot 0 = 12 + 14 = 26
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Calcolare il determinante della seguente matrice di ordine 3:}
+    
+    $
+        \begin{sqmatrix}{c c c}
+            4 & 2 & 2\\
+            4 & 0 & 9 \\
+            2 & 1 & 1
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            3 & 10 & 0\\
+            2 & 0 & 1 \\
+            2 & 1 & 0
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            0 & 1 & 0\\
+            7 & 0 & 0 \\
+            21 & 100 & 0
+        \end{sqmatrix}
+    $;
+\end{exer}
+
+\section{Determinanti di matrici di ordine superiore}
+Come si può immaginare, le formule dei determinanti di matrice di ordine superiore diventano sempre più complesse. Infatti la formula del determinante di una matrice di ordine $n$ ha ben $n!$ elementi! Naturalmente pensare di ricordarsi le formule di questi determinanti è pura follia.
+
+Esiste, fortunatamente, un \textit{algoritmo} ricorsivo che permette di calcolare il determinante di una qualsiasi matrice di ordine $n$ sapendo fare il determinante per le matrici di ordine $n - 1$. Questo algoritmo è detto \textbf{sviluppo di Laplace}, ma prima di affrontarlo è necessario introdurre il concetto di \textit{minore complementare} e \textit{complemento algebrico}.
+
+\begin{newdef}{Minore complementare}
+    Il \textbf{minore complementare} di una matrice quadrata $M_{i;j}$ è il minore ottenuto rimuovendo l'$i$-esima riga e la $j$-esima colonna dalla matrice di partenza.
+
+    \[
+        A = 
+        \begin{sqmatrix}{c c c}
+            3 & 5 & 1 \\
+            1 & 3 & 3 \\
+            0 & 2 & 5
+        \end{sqmatrix}
+        \longrightarrow
+        M_{2;2} =
+        \begin{sqmatrix}{c c}
+            3 & 1 \\
+            0 & 5
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{newdef}{Complemento algebrico}
+    Il \textbf{complemento algebrico}, o \textbf{cofattore}, di un elemento $a_{ij}$ della matrice quadrata $A$ è il determinante del minore complementare $M_{i;j}$ con anteposto un segno $+$ se la somma degli indici è pari e $-$ se è dispari.
+    \[
+        A_{ij} = (-1)^{i + j}\det M_{i;j}
+    \]
+\end{newdef}
+\begin{nb}
+    Invece di dover calcolare ogni volta la somma e controllare se anteporre un $+$ o un $-$ si può notare l'alternanza nei segni e costruirsi la seguente matrice:
+    \[
+        \begin{sqmatrix}{c c c c}
+            + & - & + & \dots \\
+            - & + & - & \dots \\
+            + & - & + & \dots \\
+            \vdots & \vdots & \vdots & \ddots
+        \end{sqmatrix}
+    \]
+\end{nb}
+
+A questo punto è possibile introdurre lo sviluppo di Laplace.
+\begin{teo}{Sviluppo di Laplace}
+    Sia $A$ una matrice quadrata di ordine $n$. Allora si ha che, fissata una riga $i$:
+    \[
+        \det A = \sum_{j = 1}^n a_{ij}A_{ij}
+    \]
+    Parimenti, fissando una colonna $j$ si ha:
+    \[
+        \det A = \sum_{i = 1}^n a_{ij}A_{ij}
+    \]
+\end{teo}
+\begin{nb}
+    Quando si usa lo sviluppo di Laplace, è bene scegliere la riga/colonna con il maggior numero di zeri.
+\end{nb}
+\begin{esempio}
+    \textbf{Calcolare il determinante della seguente matrice:}
+    \[
+        A =
+        \begin{sqmatrix}{c c c c}
+            1 & 2 & -1 & 1 \\
+            2 & 0 & 1 & 0 \\
+            1 & 1 & 1 & 1 \\
+            0 & 2 & 1 & 0
+        \end{sqmatrix}
+    \]
+    Per lo sviluppo di Laplace si può scegliere la quarta riga o la quarta colonna. In questo caso verrà scelta la quarta colonna. Applicando la formula si ha:
+    \[
+        \det A = 1 \cdot (-1)^{4 + 1} \cdot \det
+        \begin{sqmatrix}{c c c}
+            2 & 0 & 1 \\
+            1 & 1 & 1 \\
+            0 & 2 & 1
+        \end{sqmatrix}
+        + 1 \cdot (-1)^{4 + 3} \cdot \det
+        \begin{sqmatrix}{c c c}
+            1 & 2 & -1 \\
+            2 & 0 & 1 \\
+            0 & 2 & 1
+        \end{sqmatrix}
+    \]
+    Applicando la regola di Sarrus si ottiene:
+    \[
+        = (-1)(0) + (-1)(-10) = 10
+    \]
+\end{esempio}
+
+\section{Proprietà del determinante}
+Il determinante 
