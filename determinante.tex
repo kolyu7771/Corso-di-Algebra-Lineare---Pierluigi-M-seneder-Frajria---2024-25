@@ -1,4 +1,4 @@
-\chapter{Determinante e inversa}
+\chapter{Determinante}
 \section{Definizione}
 La definizione di determinante è una difficile da dare in questo momento, come è difficile in questo momento rendersi conto di quanto sia uno strumento potente. Una definizione adeguata di determinante, a questo punto, sarebbe la seguente:
 \begin{newdef}{Determinante}
@@ -245,4 +245,22 @@ A questo punto è possibile introdurre lo sviluppo di Laplace.
 \end{esempio}
 
 \section{Proprietà del determinante}
-Il determinante 
+Per il determinante valgono le seguenti proprietà:
+\begin{teo}{Proprietà del determinante}
+    \begin{enumerate}
+        \item Il determinante della matrice quadrata identità è 1:\\ 
+            $\det I_n = 1 \;\forall n > 0$;
+        \item Il determinante di una matrice e della sua trasposta sono uguali:\\
+            $\det A = \det A^T$;
+        \item Se $A$ è una matrice triangolare allora il suo determinante è dato dal prodotto degli elementi sulla sua diagonale:\\
+        $\det A = \prod_{i = 1}^n a_{ii}$;
+        \item Se si scambiano due righe/colonne di $A$ il suo determinante cambia di segno;
+        \item Se si moltiplica una sua riga di $A$ per una costante $k$ il suo determinante verrà moltiplicato per $A$;
+        \item Se si fa la somma tra multipli di due righe di $A$ il determinante resta invariato;
+        \item Se una riga/colonna è nulla oppure due righe/colonne sono uguali o proporzionali allora il determinante è nullo;
+        \item Formula di Binet: Il determinante del prodotto è il prodotto dei determinanti:\\
+            $\det(AB) = \det A \det B$;
+        \item Se $A$ è una matrice a blocchi triangolare superiore/inferiore o diagonale, allora il suo determinante è dato dal prodotto dei determinanti dei blocchi sulla diagonale.
+    \end{enumerate}
+\end{teo}
+
