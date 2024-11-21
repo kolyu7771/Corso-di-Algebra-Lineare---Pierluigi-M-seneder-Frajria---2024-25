@@ -20,7 +20,7 @@ I sistemi lineari non sono un argomento nuovo, ma sono una parte integrante del 
 La particolarità dei sistemi lineari è che un insieme di valori, per essere soluzione, deve soddisfare \textbf{\textit{contemporaneamente}} tutte e $n$ le equazioni.
 
 \begin{newdef}{Soluzione di un sistema lineare}
-    Una \textbf{soluzione} di un sistema lineare è un insieme $s_1, \dots, s_m$ di $m$ valori che, quando si pone $s_1 = x_1; \dots; s_m = x_m$, tutte le $n$ equazioni sono vere.
+    Una \textbf{soluzione} di un sistema lineare è un insieme $\{s_1, \dots, s_m\}$ di $m$ valori che, quando si pone $s_1 = x_1; \dots; s_m = x_m$, tutte le $n$ equazioni sono vere.
 
     Un sistema lineare può avere 0, 1 o infinite soluzioni.
 \end{newdef}
@@ -52,4 +52,51 @@ Il metodo più basilare è quello per sostituzione, che con sistemi come questo 
     \end{cases}
 \]
 
-Un metodo generalmente preferibile è quello per riduzione
+Un metodo generalmente preferibile è il metodo di riduzione. In sostanza si stratta di risolvere il sistema eliminando man mano le incognite dalle altre equazioni sfruttando il \textbf{principio di equivalenza dei sistemi lineari}.
+
+Per rendere più chiare le idee: il primo principio di equivalenza dice che:
+\[
+    \text{Se } A = B \text{ allora } A + C = B + C
+\]
+Si prenda allora il seguente sistema di equazioni:
+\[
+    \begin{cases}
+        \dots \\
+        A = B \\
+        C = D \\
+        \dots
+    \end{cases}
+\]
+Se $C = D$ allora $C$ e $D$ sono la stessa quantità, e perciò se $A = B$ è vero lo è anche $A + C = B + D$. Quindi si può sostituire ad $A = B$ la seconda equazione:
+\[
+    \begin{cases}
+        \dots \\
+        A + C = B + D \\
+        C = D \\
+        \dots
+    \end{cases}
+\]
+Inoltre, per il secondo principio di equivalenza:
+\[
+    \text{Se } A = B \text{ allora } \alpha A = \alpha B
+\]
+Da cui si può dedurre che se $C = D$ allora $\beta C = \beta D$, e perciò, per lo stesso ragionamento di prima, si può dire che:
+\[
+    \begin{cases}
+        \dots \\
+        A + \beta C = B + \beta D \\
+        C = D \\
+        \dots
+    \end{cases}
+\]
+
+Questa proprietà può essere sfruttata per \textit{eliminare} un'incognita per volta dalle equazioni, per arrivare poi a trovare il valore di una delle incognite e, di conseguenza, trovare quello delle altre.
+
+Si prenda, a titolo d'esempio, il seguente sistema lineare di 3 equazioni e 3 incognite:
+\[
+    \begin{cases}
+        4x + 3y + 6z = 2 \\
+        x + 6y + 4z = 5 \\
+        3x + 6y + 4z = -2
+    \end{cases}
+\]
