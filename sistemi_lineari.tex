@@ -1,0 +1,55 @@
+\chapter{Sistemi lineari}
+\section{Introduzione}
+I sistemi lineari non sono un argomento nuovo, ma sono una parte integrante del corso, quindi vale la pena riprendere l'argomento dall'inizio per stabilire una base comune.
+\begin{newdef}{Sistema lineare}
+    Un \textbf{sistema lineare} è un sistema di $n$ equazioni in $m$ incognite in cui il massimo grado presente è il primo.
+    \[
+        \begin{cases}
+            a_{11}x_{1} + \dots + a_{1m}x_{m} = b_1 \\
+            a_{21}x_{1} + \dots + a_{2m}x_{m} = b_2 \\
+            \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \\
+            a_{n1}x_{1} + \dots + a_{nm}x_{m} = b_n \\  
+        \end{cases}
+    \]
+    $x_1, \dots, x_n$ sono le \textit{incognite}, $a_{11}, \dots, a_{nm}$ sono i \textit{coefficienti} e $b_1, \dots, b_n$ sono i \textit{termini noti}
+\end{newdef}
+\begin{center}
+    $x + y = 3$ è lineare \hspace{2cm} $xy + z = 3$ non è lineare \hspace{2cm} $y^2 + x = 0$ non è lineare \hspace{2cm} $e^x + 4y = 7$ non è lineare
+\end{center}
+
+La particolarità dei sistemi lineari è che un insieme di valori, per essere soluzione, deve soddisfare \textbf{\textit{contemporaneamente}} tutte e $n$ le equazioni.
+
+\begin{newdef}{Soluzione di un sistema lineare}
+    Una \textbf{soluzione} di un sistema lineare è un insieme $s_1, \dots, s_m$ di $m$ valori che, quando si pone $s_1 = x_1; \dots; s_m = x_m$, tutte le $n$ equazioni sono vere.
+
+    Un sistema lineare può avere 0, 1 o infinite soluzioni.
+\end{newdef}
+
+\section{Metodi di risoluzione}
+Si saranno già imparati diversi modi di risolvere sistemi di equazioni lineari. Si prenda per esempio il semplice sistema lineare:
+\[
+    \begin{cases}
+        5r + 4s = -7 \\
+        5r + 2s = -4
+    \end{cases}
+\]
+Il metodo più basilare è quello per sostituzione, che con sistemi come questo è ammissibile, ma molto inefficace per sistemi con più variabili. Per risolvere un sistema lineare con questo metodo si riscrive una variabile in funzione delle altre e si cerca di semplificare man mano le equazioni fino a trovare il valore di una delle variabili e trovare di conseguenza quello delle altre. In pratica:
+\[
+    \begin{cases}
+        5r + 4s = -7 \\
+        5r = -4 - 2s
+    \end{cases}
+    \rightarrow
+    \begin{cases}
+        -4 - 2s + 4s = -7 \rightarrow 2s = -3\\
+        5r = -4 - 2s \rightarrow r = -\frac{4}{5} - \frac{2}{5}s
+    \end{cases}
+\]
+\[
+    \begin{cases}
+        s = -\frac{3}{2} \\
+        r = -\frac{1}{5}
+    \end{cases}
+\]
+
+Un metodo generalmente preferibile è quello per riduzione
