@@ -11,11 +11,24 @@ I sistemi lineari non sono un argomento nuovo, ma sono una parte integrante del 
             a_{n1}x_{1} + \dots + a_{nm}x_{m} = b_n \\  
         \end{cases}
     \]
-    $x_1, \dots, x_n$ sono le \textit{incognite}, $a_{11}, \dots, a_{nm}$ sono i \textit{coefficienti} e $b_1, \dots, b_n$ sono i \textit{termini noti}
+    $x_1, \dots, x_n$ sono le \textit{incognite}, $a_{11}, \dots, a_{nm}$ sono i \textit{coefficienti} e $b_1, \dots, b_n$ sono i \textit{termini noti}.
 \end{newdef}
+
 \begin{center}
     $x + y = 3$ è lineare \hspace{2cm} $xy + z = 3$ non è lineare \hspace{2cm} $y^2 + x = 0$ non è lineare \hspace{2cm} $e^x + 4y = 7$ non è lineare
 \end{center}
+
+\begin{newdef}{Sistema lineare omogeneo}
+    Un sistema lineare è detto \textbf{omogeneo} se $b_1 = \dots = b_n = 0$, ovvero se è nella forma:
+    \[
+        \begin{cases}
+            a_{11}x_{1} + \dots + a_{1m}x_{m} = 0 \\
+            a_{21}x_{1} + \dots + a_{2m}x_{m} = 0 \\
+            \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \\
+            a_{n1}x_{1} + \dots + a_{nm}x_{m} = 0 \\  
+        \end{cases}
+    \]
+\end{newdef}
 
 La particolarità dei sistemi lineari è che un insieme di valori, per essere soluzione, deve soddisfare \textbf{\textit{contemporaneamente}} tutte e $n$ le equazioni.
 
@@ -29,28 +42,53 @@ La particolarità dei sistemi lineari è che un insieme di valori, per essere so
 Si saranno già imparati diversi modi di risolvere sistemi di equazioni lineari. Si prenda per esempio il semplice sistema lineare:
 \[
     \begin{cases}
-        5r + 4s = -7 \\
-        5r + 2s = -4
+        5x + 4y = -7 \\
+        5x + 2y = -4
     \end{cases}
 \]
 Il metodo più basilare è quello per sostituzione, che con sistemi come questo è ammissibile, ma molto inefficace per sistemi con più variabili. Per risolvere un sistema lineare con questo metodo si riscrive una variabile in funzione delle altre e si cerca di semplificare man mano le equazioni fino a trovare il valore di una delle variabili e trovare di conseguenza quello delle altre. In pratica:
 \[
     \begin{cases}
-        5r + 4s = -7 \\
-        5r = -4 - 2s
+        5x + 4y = -7 \\
+        5x = -4 - 2y
     \end{cases}
     \rightarrow
     \begin{cases}
-        -4 - 2s + 4s = -7 \rightarrow 2s = -3\\
-        5r = -4 - 2s \rightarrow r = -\frac{4}{5} - \frac{2}{5}s
+        -4 - 2y + 4y = -7 \rightarrow 2y = -3\\
+        5x = -4 - 2y \rightarrow x = -\frac{4}{5} - \frac{2}{5}y
     \end{cases}
 \]
 \[
     \begin{cases}
-        s = -\frac{3}{2} \\
-        r = -\frac{1}{5}
+        y = -\frac{3}{2} \\
+        x = -\frac{1}{5}
     \end{cases}
 \]
+
+\begin{exer}
+    \textbf{Risolvere con il metodo di sostituzione i seguenti sistemi lineari:}
+
+    $
+        \begin{cases}
+            6x + 3y = -6 \\
+            4x + 6y = 6
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            3x + 6y = 3 \\
+            3x + 2y = -7
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            12x - 6y = 6 \\
+            3x + 12y = -2
+        \end{cases}
+    $;
+\end{exer}
 
 Un metodo generalmente preferibile è il metodo di riduzione. In sostanza si stratta di risolvere il sistema eliminando man mano le incognite dalle altre equazioni sfruttando il \textbf{principio di equivalenza dei sistemi lineari}.
 
@@ -89,6 +127,9 @@ Da cui si può dedurre che se $C = D$ allora $\beta C = \beta D$, e perciò, per
         \dots
     \end{cases}
 \]
+\begin{nb}
+    Non si può sostituire una qualsiasi equazione con la nuova equazione ricavata: si possono solo sostituire $A = B$ o $C = D$.
+\end{nb}
 
 Questa proprietà può essere sfruttata per \textit{eliminare} un'incognita per volta dalle equazioni, per arrivare poi a trovare il valore di una delle incognite e, di conseguenza, trovare quello delle altre.
 
@@ -100,3 +141,385 @@ Si prenda, a titolo d'esempio, il seguente sistema lineare di 3 equazioni e 3 in
         3x + 6y + 4z = -2
     \end{cases}
 \]
+Come abbiamo detto l'obiettivo è eliminare, una per una, tutte le incognite tranne una, di cui rimarrà semplicemente il valore.
+
+La cosa più sensata da fare è sostituire alla seconda (o alla terza) equazione la differenza tra la seconda e la terza equazione, in quanto hanno entrambi gli stessi coefficienti per $y$ e $z$.
+\[
+    \begin{array}{c c c c}
+        x & 6y & 4z & 5 \\
+        -3x & -6y & -4z & 2 \\
+        \hline
+        -2x & 0 & 0 & 7
+    \end{array}
+\]
+\[
+    -2x = 7 \rightarrow x = -\frac{7}{2}
+\]
+Facendo un po' di ordine e sostituendo $x$ nelle altre due equazioni si ottiene il seguente sistema lineare:
+\[
+    \begin{cases}
+        x = -\frac{7}{2} \\
+        3y + 6z = 16 \\
+        6y + 4z = \frac{17}{2}
+    \end{cases}
+\]
+A questo punto, per eliminare $y$, si può sostituire alla terza equazione la differenza tra due volte la seconda equazione e la terza equazione:
+\[
+    \begin{array}{c c c}
+        6y & 12z &32 \\
+        -6y & -4z & -\frac{17}{2} \\
+        \hline
+        0 & 8z & \frac{47}{2}
+    \end{array}
+\]
+\[
+    8z = \frac{47}{2} \rightarrow z = \frac{47}{16}
+\]
+Quindi il nuovo sistema lineare è:
+\[
+    \begin{cases}
+        x = -\frac{7}{2} \\
+        3y + 6z = 16 \\
+        z = \frac{47}{16}
+    \end{cases}
+\]
+A questo punto trovare $y$ è banale:
+\[
+    3y + 3 \cdot \frac{47}{8} = 16 \rightarrow y + \frac{47}{8} = \frac{16}{3} \rightarrow y = -\frac{13}{24}
+\]
+\[
+    \begin{cases}
+        x = -\frac{7}{2} \\
+        y = -\frac{13}{24} \\
+        z = \frac{47}{16}
+    \end{cases}
+\]
+
+\begin{exer}
+    \text{Risolvere con il metodo di riduzione i seguenti sistemi lineari:}
+    
+    $
+        \begin{cases}
+            2x + 2y + 7z = 6 \\
+            7x + 6y + z = 4 \\
+            4x + 2y + 2z = -2
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            x + 7y + 2z = 2 \\
+            3x + 4y + 6z = -4 \\
+            2x + 6y + 2z = 6
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            6x + 6y + 7z = 6 \\
+            6x + 6y + 6z = 2 \\
+            4x + y + 6z = 6
+        \end{cases}
+    $;
+\end{exer}
+
+Esistono altri metodi di risoluzione, che però per la maggior parte verranno ignorati. L'altro metodo che verrà esplorato più avanti, nella parte astratta, è il metodo di Cramer.
+
+\section{Sistemi come matrici e vettori}
+Riprendendo il discorso teorico sui sistemi lineari, questi si possono rappresentare tramite matrici e vettori.
+\begin{newdef}{Rappresentazione matriciale dei sistemi lineari}
+    Un sistema lineare generico può essere rappresentato come:
+    \[
+        A\textbf{x} = \textbf{b}
+    \]
+    dove $A$ è la matrice dei coefficienti:
+    \[
+        A =
+        \begin{sqmatrix}{c c c c}
+            a_{11} & a_{12} & \dots & a_{1m} \\
+            a_{21} & a_{22} & \dots & a_{2m} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nm} \\
+        \end{sqmatrix}
+    \]
+    \textbf{x} è il vettore delle incognite:
+    \[
+        \textbf{x} =
+        \begin{sqcolvec}
+            x_1 \\
+            x_2 \\
+            \vdots \\
+            x_m
+        \end{sqcolvec}
+    \]
+    E \textbf{b} è il vettore dei termini noti:
+    \[
+        \textbf{b} =
+        \begin{sqcolvec}
+            b_1 \\
+            b_2 \\
+            \vdots \\
+            b_n
+        \end{sqcolvec}
+    \]
+\end{newdef}
+
+Quindi, nel caso particolare del sistema lineare:
+\[
+    \begin{cases}
+        4x + 3y + 6z = 2 \\
+        x + 6y + 4z = 5 \\
+        3x + 6y + 4z = -2
+    \end{cases}
+\]
+Questo diventerebbe:
+\[
+    \begin{sqmatrix}{c c c}
+        4 & 3 & 6 \\
+        1 & 6 & 4 \\
+        3 & 6 & 4
+    \end{sqmatrix}
+    \begin{sqcolvec}
+        x \\
+        y \\
+        z
+    \end{sqcolvec}
+    =
+    \begin{sqcolvec}
+        2 \\
+        5 \\
+        -2
+    \end{sqcolvec}
+\]
+Da qui si può vedere il motivo della definizione di prodotto riga per colonna data all'inizio. Infatti, svolgendolo, si riottengono le equazioni del sistema iniziale:
+\[
+    \begin{sqmatrix}{c c c}
+        4 & 3 & 6 \\
+        1 & 6 & 4 \\
+        3 & 6 & 4
+    \end{sqmatrix}
+    \begin{sqcolvec}
+        x \\
+        y \\
+        z
+    \end{sqcolvec}
+    =
+    \begin{sqcolvec}
+        4x + 3y + 6z \\
+        x + 6y + 4z \\
+        3x + 6y + 4z
+    \end{sqcolvec}
+\]
+
+\begin{newdef}{Matrice completa di un sistema lineare}
+    Dato un certo sistema lineare, la \textbf{matrice completa} del sistema è la matrice dei coefficienti a cui viene affiancato il vettore colonna dei termini noti.
+    \[
+        (A|\textbf{b}) =
+        \begin{sqmatrix}{c c c c c}
+            a_{11} & a_{12} & \dots & a_{1m} & b_{1} \\
+            a_{21} & a_{22} & \dots & a_{2m} & b_{2} \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nm} & b_{n}\\
+        \end{sqmatrix}
+    \]
+\end{newdef}
+
+\section{Metodo di Eliminazione di Gauss (MEG)}
+Con questa nuova rappresentazione è possibile definire azioni che non cambiano l'insieme delle soluzioni di un sistema lineare anche sulle matrici. Queste azioni sono dette \textbf{operazioni elementari di riga}.
+\begin{newdef}{Operazioni elementari di riga}
+    Le \textbf{operazioni elementari di riga} sono operazioni fatte sulle righe che non cambiano l'insieme delle soluzioni del sistema lineare associato. Sono:
+    \begin{enumerate}
+        \item \textbf{Scambio} di due righe;
+        \item \textbf{Prodotto con scalare} di una riga;
+        \item \textbf{Somma tra multipli} di due righe.
+    \end{enumerate}
+    Per indicare lo svolgimento di queste operazioni si utilizza il simbolo $\sim$.
+\end{newdef}
+
+L'obiettivo del MEG è quello di portare la matrice completa del sistema una forma detta \text{a gradini}
+\begin{newdef}{Matrice a gradini}
+    Una matrice $n \times m$ è detta \textbf{a gradini} se il \textit{pivot} (primo elemento non nullo) di ogni riga è in una colonna più a destra di quello della riga precedente.
+    \[
+        \begin{sqmatrix}{c c c c c}
+            * & * & * & * & * \\
+            0 & * & * & * & * \\
+            0 & 0 & * & * & * \\
+            0 & 0 & 0 & * & *
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{nb}
+    Non tutte le \textit{colonne} hanno necessariamente un pivot.
+\end{nb}
+Il motivo per cui si punta ad arrivare a una matrice a gradini è che questa corrisponde a un sistema ``ridotto'', ovvero in cui è stato applicato il metodo di riduzione in maniera completa. Per esempio:
+\[
+    \begin{sqmatrix}{c c c c c}
+        7 & 3 & 1 & 4 & 3 \\
+        0 & 9 & 1 & 5 & 0 \\
+        0 & 0 & 3 & 1 & 10 \\
+        0 & 0 & 0 & 5 & 2
+    \end{sqmatrix}
+    \text{ equivale a }
+    \begin{cases}
+        7x + 3y + z + 4w = 3 \\
+        9y + z + 5w = 0 \\
+        3z + w = 10 \\
+        5w = 2
+    \end{cases}
+\]
+A questo punto non resta che introdurre effettivamente il MEG:
+
+\begin{teo}{Metodo di Eliminazione di Gauss}
+    Il \textbf{Metodo di Eliminazione di Gauss} è un metodo di riduzione di una matrice nella sua forma a gradini tramite operazioni elementari di riga. Il metodo è il seguente:
+    \begin{enumerate}
+        \item Attraverso lo scambio di righe, portare la matrice a non avere righe con pivot più a sinistra dei pivot delle righe precedenti, avendo cura di mettere eventuali righe nulle in fondo alla matrice;
+        \item Individuare il pivot della riga in analisi (inizialmente la prima) ed eliminare attraverso la somma tra multipli di righe tutti gli elementi della colonna corrispondente sottostanti il pivot;
+        \item Ripetere il processo per la riga successiva fino ad avere una matrice a gradini.
+    \end{enumerate}
+\end{teo}
+Una volta ottenuta una matrice a gradini si può risolvere il sistema associato alla matrice sostituendo man mano i valori trovati.
+\begin{esempio}
+    \textbf{Risolvere il seguente sistema lineare usando il MEG:}
+    \[
+        \begin{cases}
+            3x + 5y + 3z + 4w = 1 \\
+            6x + 5y + 3z + 5w = -5 \\
+            3x + 2y + 3z + 4w = 4 \\
+            6x + 5y + 6z + 4w = 5
+        \end{cases}
+    \]
+    Si inizia scrivendo la matrice completa del sistema:
+    \[
+        (A|\textbf{b}) =
+        \begin{sqmatrix}{c c c c c}
+            3 & 5 & 3 & 4 & 1 \\
+            6 & 5 & 3 & 5 & -5 \\
+            3 & 2 & 3 & 4 & 4 \\
+            6 & 5 & 6 & 4 & 5
+        \end{sqmatrix}
+    \]
+    Qui sotto verranno scritti i vari passaggi del MEG svolti:
+    \begin{center}
+        \begin{minipage}{.4\textwidth}
+            \[
+                \begin{sqmatrix}{c c c c c}
+                    3 & 5 & 3 & 4 & 1 \\
+                    0 & 5 & 3 & 3 & 7 \\
+                    0 & 3 & 0 & 0 & -3 \\
+                    0 & 5 & 0 & 4 & -3
+                \end{sqmatrix}
+            \]
+        \end{minipage}
+        \begin{minipage}{.4\textwidth}
+            \[
+                R_2 = 2R_1 - R_2
+            \]
+            \[
+                R_3 = R_1 - R_3
+            \]
+            \[
+                R_4 = 2R_1 - R_4
+            \]
+        \end{minipage}
+    \end{center}
+    \begin{center}
+        \begin{minipage}{.4\textwidth}
+            \[
+                \begin{sqmatrix}{c c c c c}
+                    3 & 5 & 3 & 4 & 1 \\
+                    0 & 5 & 3 & 3 & 7 \\
+                    0 & 0 & 3 & 3 & 12 \\
+                    0 & 0 & 3 & -1 & 10
+                \end{sqmatrix}
+            \]
+        \end{minipage}
+        \begin{minipage}{.4\textwidth}
+            \[
+                R_3 = R_2 - \frac{5}{3}R_3
+            \]
+            \[
+                R_4 = R_2 - R_4
+            \]
+        \end{minipage}
+    \end{center}
+    \begin{center}
+        \begin{minipage}{.4\textwidth}
+            \[
+                \begin{sqmatrix}{c c c c c}
+                    3 & 5 & 3 & 4 & 1 \\
+                    0 & 5 & 3 & 3 & 7 \\
+                    0 & 0 & 3 & 3 & 12 \\
+                    0 & 0 & 0 & 4 & 2
+                \end{sqmatrix}
+            \]
+        \end{minipage}
+        \begin{minipage}{.4\textwidth}
+            \[
+                R_4 = R_3 - R_4
+            \]
+        \end{minipage}
+    \end{center}
+    Ora che la matrice è a gradini si può risolvere il sistema associato:
+    \[
+        \begin{cases}
+            3x + 5y + 3z + 4w = 1 \\
+            5y + 3z + 3w = 7 \\
+            3z + 3w = 12 \\
+            4w = 2 \rightarrow w = \frac{1}{2}
+        \end{cases}
+    \]
+    \[
+        3z + \frac{3}{2} = 12 \rightarrow z = \frac{7}{2}
+    \]
+    \[
+        5y + \frac{21}{2} + \frac{3}{2} = 7 \rightarrow y = -1
+    \]
+    \[
+        3x - 5 + \frac{21}{2} + 2 = 1 \rightarrow x = -\frac{13}{6}
+    \]
+    Il vettore soluzione sarà:
+    \[
+        \textbf{x} =
+        \begin{sqcolvec}
+            x \\
+            y \\
+            z \\
+            w
+        \end{sqcolvec}
+        =
+        \begin{sqcolvec}
+            -\frac{13}{6} \\
+            -1 \\
+            \frac{7}{2} \\
+            \frac{1}{2}
+        \end{sqcolvec}
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Risolvere i seguenti sistemi lineari con il MEG:}
+
+    $
+        \begin{cases}
+            -4x + 10y - z = -6 \\
+            -12x + 2y + 2z = -5 \\
+            9x + 10y + 2z = 3
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            -7x + 4y - 11z = 3 \\
+            -6x - 2y + 2z = -1 \\
+            5x - 4y - 11z = -5
+        \end{cases}
+    $;
+
+    $
+        \begin{cases}
+            6x + 6y + 4z + 2w = -7 \\
+            2x + 2y + 5z + 7w = -4 \\
+            2x + 6y + 6z + 4w = 5 \\
+            4v + 2w + 4z + 4w = -7
+        \end{cases}
+    $;
+\end{exer}
