@@ -1,3 +1,4 @@
+\raggedbottom
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,RO]{\thepage}
@@ -27,9 +28,9 @@
 
 \newcommand{\sectionheader}[1]{
 	\begin{tikzpicture}[baseline=(current bounding box.north), remember picture, overlay]
-		\filldraw[Emerald] (0,0) rectangle (1.5,0.5);
-		\node[white, font=\large\bfseries] at (0.75,0.25) {\thesection};
-		\node[anchor=west, Red, font=\large\bfseries] at (1.5,0.25) {#1};
+		\filldraw[Emerald] (0,-0.05) rectangle (1.75,0.55);
+		\node[white, font=\Large\bfseries] at (0.875,0.25) {\thesection};
+		\node[anchor=west, Red, font=\Large\bfseries] at (1.8,0.25) {#1};
 	\end{tikzpicture}
 }
 
@@ -48,13 +49,22 @@
   {0pt} % Spaziatura tra etichetta e titolo
   {#1}
 
-  \titleformat{\section}[display]
+\titleformat{\section}[display]
   {\sffamily\Large\bfseries}
   {}
   {0pt} % Spaziatura tra etichetta e titolo
   {
     \vspace{-0.75cm}
     \sectionheader{#1}
+  }
+
+\titleformat{\subsection}[display]
+  {\sffamily\large\bfseries}
+  {}
+  {0pt} % Spaziatura tra etichetta e titolo
+  {
+    \vspace{-0.5cm}
+    \sffamily\bfseries\textcolor{Red!75!White}{#1}\rmfamily\mdseries
   }
 
 \tcbset{MyStyle/.style={
@@ -118,3 +128,5 @@
   
 \newcommand{\tikzextstart}{\tikzset{external/export=true}\begin{tikzpicture}}
 \newcommand{\tikzextend}{\end{tikzpicture}\tikzset{external/export=false}}
+
+\newcommand{\qedwhite}{\hfill\square}

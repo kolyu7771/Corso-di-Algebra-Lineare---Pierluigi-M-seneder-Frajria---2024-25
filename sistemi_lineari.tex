@@ -39,6 +39,7 @@ La particolarità dei sistemi lineari è che un insieme di valori, per essere so
 \end{newdef}
 
 \section{Metodi di risoluzione}
+\subsection{Metodo per sostituzione}
 Si saranno già imparati diversi modi di risolvere sistemi di equazioni lineari. Si prenda per esempio il semplice sistema lineare:
 \[
     \begin{cases}
@@ -89,6 +90,8 @@ Il metodo più basilare è quello per sostituzione, che con sistemi come questo 
         \end{cases}
     $;
 \end{exer}
+
+\subsection{Metodo di riduzione}
 
 Un metodo generalmente preferibile è il metodo di riduzione. In sostanza si stratta di risolvere il sistema eliminando man mano le incognite dalle altre equazioni sfruttando il \textbf{principio di equivalenza dei sistemi lineari}.
 
@@ -325,6 +328,7 @@ Da qui si può vedere il motivo della definizione di prodotto riga per colonna d
 \end{newdef}
 
 \section{Metodo di Eliminazione di Gauss (MEG)}
+\subsection{Le operazioni elementari di riga}
 Con questa nuova rappresentazione è possibile definire azioni che non cambiano l'insieme delle soluzioni di un sistema lineare anche sulle matrici. Queste azioni sono dette \textbf{operazioni elementari di riga}.
 \begin{newdef}{Operazioni elementari di riga}
     Le \textbf{operazioni elementari di riga} sono operazioni fatte sulle righe che non cambiano l'insieme delle soluzioni del sistema lineare associato. Sono:
@@ -336,6 +340,7 @@ Con questa nuova rappresentazione è possibile definire azioni che non cambiano 
     Per indicare lo svolgimento di queste operazioni si utilizza il simbolo $\sim$.
 \end{newdef}
 
+\subsection{Forma a gradini}
 L'obiettivo del MEG è quello di portare la matrice completa del sistema una forma detta \text{a gradini}
 \begin{newdef}{Matrice a gradini}
     Una matrice $n \times m$ è detta \textbf{a gradini} se il \textit{pivot} (primo elemento non nullo) di ogni riga è in una colonna più a destra di quello della riga precedente.
@@ -369,6 +374,7 @@ Il motivo per cui si punta ad arrivare a una matrice a gradini è che questa cor
 \]
 A questo punto non resta che introdurre effettivamente il MEG:
 
+\subsection{Metodo di Eliminazione di Gauss}
 \begin{teo}{Metodo di Eliminazione di Gauss}
     Il \textbf{Metodo di Eliminazione di Gauss} è un metodo di riduzione di una matrice nella sua forma a gradini tramite operazioni elementari di riga. Il metodo è il seguente:
     \begin{enumerate}
@@ -523,4 +529,136 @@ Una volta ottenuta una matrice a gradini si può risolvere il sistema associato 
         \end{cases}
     $;
 \end{exer}
-Per completezza:
+
+\subsection{Forma a gradini ridotta}
+Per completezza, soprattutto nei testi anglofoni, viene introdotta la cosiddetta \textit{reduced row-echelon form}, che verrà chiamata qui la \textbf{forma a gradini ridotta}.
+\begin{newdef}{Forma a gradini ridotta}
+    Una \textbf{matrice a gradini ridotta} è una matrice $n \times m$ a gradini in cui:
+    \begin{itemize}
+        \item I pivot valgono $1$;
+        \item I pivot sono gli unici elementi della loro colonna.
+    \end{itemize}
+    \[
+        \begin{sqmatrix}{c c c c c}
+            1 & 0 & * & 0 & 0 \\
+            0 & 1 & * & 0 & 0 \\
+            0 & 0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 0 & 1
+        \end{sqmatrix}
+    \]
+    Esiste un'\textbf{unica} forma a gradini ridotta per ogni matrice e le operazioni elementari di riga non la cambiano.
+\end{newdef}
+\begin{nb}
+    Molti software hanno la capacità di calcolare la forma a gradini ridotta delle matrici, quindi un ottimo modo per controllare se si è svolto il MEG correttamente è controllare tramite software che le due forme a gradini ridotte coincidano.
+\end{nb}
+La comodità della forma a gradini ridotta è che corrisponde, nella forma di sistema lineare, a un sistema in cui quasi tutte le variabili hanno il loro valore esplicitato.
+\[
+    \begin{sqmatrix}{c c c c c}
+        1 & 0 & 0 & 0 & 3 \\
+        0 & 1 & 0 & 0 & 9 \\
+        0 & 0 & 1 & 0 & 4 \\
+        0 & 0 & 0 & 1 & 5
+    \end{sqmatrix}
+    \text{ equivale a }
+    \begin{cases}
+        x = 3 \\
+        y = 9 \\
+        z = 4 \\
+        t = 5
+    \end{cases}
+\]
+L'algoritmo che utilizza le operazioni elementari di riga per portarsi nella forma a gradini ridotta si chiama \textbf{Metodo di Eliminazione di Gauss-Jordan}.
+
+\section{Soluzioni di un sistema lineare}
+È stato già introdotta la definizione di soluzione di un sistema lineare, ed è già stato detto che un sistema può avere solo 0, 1 o infinite soluzioni. Ora vale la pena approfondire il discorso delle soluzioni di un sistema lineare.
+
+\subsection{Nessuna soluzione}
+\begin{newdef}{Sistema impossibile}
+    Un sistema $A\textbf{x} = \textbf{b}$ è detto \textbf{impossibile} se non esiste alcun vettore \textbf{s} che soddisfa il sistema.
+\end{newdef}
+
+Spesso questo risultato deriva da un'incoerenza tra due equazioni che sono fondamentalmente uguali i cui termini noti sono diversi.
+\[
+    \begin{cases}
+        \dots \\
+        \alpha x + \beta y = \gamma \\
+        \alpha x + \beta y = \delta \\
+        \dots
+    \end{cases}
+\]
+Le due equazioni, all'inizio, possono anche non essere uguali (impedendo quindi di notare l'incongruenza), ma tramite il MEG si arriverà a una situazione del tipo:
+\[
+    \begin{sqmatrix}{c c c c c}
+        \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \alpha a & \beta b & \gamma c & \delta d & \epsilon e \\
+        \zeta a & \eta b & \iota c & \kappa d & \lambda f
+    \end{sqmatrix}
+\]
+Ignorando i coefficienti, è facile notare che le due righe differiscono solo nell'ultima colonna, cosa che si traduce invariabilmente nella forma:
+\[
+    \begin{sqmatrix}{c c c c c}
+        \vdots & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & 0 & *
+    \end{sqmatrix}
+\]
+Che, nel sistema associato, equivale a dire $0 = *$, dove $*$ è un numero diverso da zero, che è un'equazione sempre falsa.
+Perciò:
+\begin{nb}
+    Quando la forma a gradini della matrice completa ha un pivot in ultima colonna ciò vuol dire che il sistema associato è impossibile.
+\end{nb}
+
+\begin{teo}{Esistenza della soluzione di un sistema omogeneo}
+    Ogni sistema sistema lineare omogeneo ha almeno una soluzione, ovvero $\textbf{s} = \vec 0$. In altre parole, non esiste alcun sistema lineare omogeneo impossibile.
+\end{teo}
+\begin{newdim}
+    Si prenda il generico sistema lineare omogeneo:
+    \[
+        \begin{cases}
+            a_{11}x_{1} + \dots + a_{1m}x_{m} = 0 \\
+            a_{21}x_{1} + \dots + a_{2m}x_{m} = 0 \\
+            \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \\
+            a_{n1}x_{1} + \dots + a_{nm}x_{m} = 0 \\  
+        \end{cases}
+    \]
+    In forma matriciale questo sistema diventa:
+    \[
+        (A|\textbf{b}) =
+        \begin{sqmatrix}{c c c c c}
+            a_{11} & a_{12} & \dots & a_{1m} & 0 \\
+            a_{21} & a_{22} & \dots & a_{2m} & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nm} & 0\\
+        \end{sqmatrix}
+    \]
+    Utilizzando le operazioni elementari di riga, è impossibile avere un elemento non nullo in ultima colonna:
+    \begin{itemize}
+        \item \textbf{Scambio:} Lo scambio non cambia i valori dell'ultima colonna;
+        \item \textbf{Prodotto con scalare:} Ogni prodotto che coinvolge lo 0 vale 0, quindi i valori dell'ultima colonna continuano a valere 0;
+        \item \textbf{Somma tra multipli:} Come detto prima, i prodotti che coinvolgono lo 0 valgono 0, e la somma tra 0 vale 0.
+    \end{itemize}
+    Quindi la forma a gradini ridotta della matrice non avrà mai un pivot in ultima colonna, e quindi esisterà sempre una soluzione.
+
+    Per dimostrare che $\vec 0$ è sempre soluzione di $A\textbf{x} = \vec 0$, basta fare la sostituzione $a_{11} = \dots = a_{nm} = 0$ e vedere che si ottiene:
+    \[
+        \begin{cases}
+            0x_{1} + \dots + 0x_{m} = 0 \\
+            0x_{1} + \dots + 0x_{m} = 0 \\
+            \vdots \quad\quad \vdots \quad\quad \vdots \quad\quad \vdots \\
+            0x_{1} + \dots + 0x_{m} = 0 \\  
+        \end{cases}
+        \rightarrow
+        \begin{cases}
+            0 = 0 \\
+            \vdots \\
+            0 = 0
+        \end{cases}
+    \]
+    Che sono equazioni sempre vere. Perciò il sistema ha sempre almeno una soluzione, ovvero $\textbf{s} = \vec 0$.
+
+    $\qedwhite$
+\end{newdim}
+\subsection{Una sola soluzione}
+\begin{newdef}{Sistema determinato}
+    Un sistema $A\textbf{x} = \textbf{b}$ è detto \textbf{determinato} se esiste un solo vettore \textbf{s} che soddisfa il sistema.
+\end{newdef}
+Ess

@@ -1,0 +1,33 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {part}{I\hspace {1em}Parte computazionale: Vettori e matrici}{7}{}%
+\contentsline {chapter}{\numberline {1}Vettori e matrici}{9}{}%
+\contentsline {section}{\numberline {1.1}$n$-vettori}{9}{}%
+\contentsline {subsection}{\numberline {1.1.1}Definizione}{9}{}%
+\contentsline {subsection}{\numberline {1.1.2}Somma e prodotto con scalare}{9}{}%
+\contentsline {section}{\numberline {1.2}Matrici}{11}{}%
+\contentsline {subsection}{\numberline {1.2.1}Definizione}{11}{}%
+\contentsline {subsection}{\numberline {1.2.2}Matrici particolari}{12}{}%
+\contentsline {subsection}{\numberline {1.2.3}Somma e prodotto con scalare}{14}{}%
+\contentsline {subsection}{\numberline {1.2.4}Prodotto riga per colonna e potenze}{16}{}%
+\contentsline {subsection}{\numberline {1.2.5}Trasposta di una matrice}{19}{}%
+\contentsline {chapter}{\numberline {2}Determinante}{21}{}%
+\contentsline {section}{\numberline {2.1}Introduzione}{21}{}%
+\contentsline {section}{\numberline {2.2}Determinanti di matrici di ordine 1, 2 e 3}{21}{}%
+\contentsline {section}{\numberline {2.3}Determinanti di matrici di ordine superiore}{23}{}%
+\contentsline {section}{\numberline {2.4}Proprietà del determinante}{25}{}%
+\contentsline {chapter}{\numberline {3}Sistemi lineari}{27}{}%
+\contentsline {section}{\numberline {3.1}Introduzione}{27}{}%
+\contentsline {section}{\numberline {3.2}Metodi di risoluzione}{28}{}%
+\contentsline {subsection}{\numberline {3.2.1}Metodo per sostituzione}{28}{}%
+\contentsline {subsection}{\numberline {3.2.2}Metodo di riduzione}{28}{}%
+\contentsline {section}{\numberline {3.3}Sistemi come matrici e vettori}{30}{}%
+\contentsline {section}{\numberline {3.4}Metodo di Eliminazione di Gauss (MEG)}{32}{}%
+\contentsline {subsection}{\numberline {3.4.1}Le operazioni elementari di riga}{32}{}%
+\contentsline {subsection}{\numberline {3.4.2}Forma a gradini}{32}{}%
+\contentsline {subsection}{\numberline {3.4.3}Metodo di Eliminazione di Gauss}{33}{}%
+\contentsline {subsection}{\numberline {3.4.4}Forma a gradini ridotta}{35}{}%
+\contentsline {section}{\numberline {3.5}Soluzioni di un sistema lineare}{36}{}%
+\contentsline {subsection}{\numberline {3.5.1}Nessuna soluzione}{36}{}%
+\contentsline {subsection}{\numberline {3.5.2}Una sola soluzione}{37}{}%
+\contentsline {chapter}{\numberline {4}Inversa di una matrice}{39}{}%
