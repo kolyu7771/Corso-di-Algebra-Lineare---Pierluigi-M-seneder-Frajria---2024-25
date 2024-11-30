@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.28)  24 NOV 2024 22:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.28)  30 NOV 2024 19:03
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -734,29 +734,29 @@ Capitolo 3.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 538.
  (c:/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [35] [36]) (./inversa.tex [37] [38
-
-]
+) [35] [36] [37] [38] [39]) (./inversa.tex [40]
 Capitolo 4.
-) [39] (./main.aux)
+) [41
+
+] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.55997pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 38799 strings out of 478023
- 961229 string characters out of 5842667
+ 38807 strings out of 478023
+ 961357 string characters out of 5842667
  1547529 words of memory out of 5000000
- 56706 multiletter control sequences out of 15000+600000
+ 56714 multiletter control sequences out of 15000+600000
  539461 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,13n,118p,625b,1104s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,13n,118p,667b,1104s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (39 pages, 292911 bytes).
+Output written on main.pdf (41 pages, 304984 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
+ 282 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

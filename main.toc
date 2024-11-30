@@ -29,5 +29,6 @@
 \contentsline {subsection}{\numberline {3.4.4}Forma a gradini ridotta}{35}{}%
 \contentsline {section}{\numberline {3.5}Soluzioni di un sistema lineare}{36}{}%
 \contentsline {subsection}{\numberline {3.5.1}Nessuna soluzione}{36}{}%
-\contentsline {subsection}{\numberline {3.5.2}Una sola soluzione}{37}{}%
-\contentsline {chapter}{\numberline {4}Inversa di una matrice}{39}{}%
+\contentsline {subsection}{\numberline {3.5.2}Una sola soluzione}{38}{}%
+\contentsline {subsection}{\numberline {3.5.3}Infinite soluzioni}{39}{}%
+\contentsline {chapter}{\numberline {4}Inversa di una matrice}{41}{}%

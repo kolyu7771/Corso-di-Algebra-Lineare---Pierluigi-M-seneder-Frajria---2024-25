@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1732484157 "d:/Scuola/File.tex/Corso-di-Algebra-Lineare---Pierluigi-M-seneder-Frajria---2024-25/main.tex" "main.pdf" "main" 1732484165
+["pdflatex"] 1732989829 "d:/Scuola/File.tex/Corso-di-Algebra-Lineare---Pierluigi-M-seneder-Frajria---2024-25/main.tex" "main.pdf" "main" 1732989838
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1659040419 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1659040857 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1659043861 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -251,10 +251,10 @@
   "immagini/main-figure0.pdf" 1732219078 29560 f75a5f3f227f364d27234286667870bc ""
   "introduzione.tex" 1732228244 1230 bd956da0c66bfabe0062a272db26d384 ""
   "inversa.tex" 1732219078 32 4a3157edadbe56922ace909f3280148a ""
-  "main.aux" 1732484164 4757 382cdcca1d2d72a8ab773310adb3cd3c "pdflatex"
+  "main.aux" 1732989838 4871 ca688ee0f9693660da20dbce03cb113b "pdflatex"
   "main.tex" 1732472709 900 ffffc155befdbf0da044ff9ad26f35e3 ""
-  "main.toc" 1732484164 2378 bbb0dea6851577d9dc3d03fe63a925a0 "pdflatex"
-  "sistemi_lineari.tex" 1732484156 23542 5c521a35268e391c9dd7867dbea201c8 ""
+  "main.toc" 1732989838 2451 cf51857d16b95f48cd457a7f2f60607f "pdflatex"
+  "sistemi_lineari.tex" 1732989817 32687 7ab1e94071bb002553e7312624de67b0 ""
   "vettori_matrici.tex" 1732473930 23428 0f43e29816d3224516a09a8e63074018 ""
   (generated)
   "main.aux"
