@@ -138,6 +138,8 @@ Generalmente le matrici vengono indicate con lettere maiuscole dell'alfabeto lat
 
 Le matrici sono quindi un'estensione dei vettori in una seconda dimensione: invece di avere $n$ elementi ``in fila``, si hanno $nm$ elementi in tabella.
 
+Per riferirsi alle matrici $n \times m$ si usa anche dire che appartengono all'insieme $\mathbb{R}^{n \times m}$.
+
 Le matrici sono uno strumento fondamentale che verrà incontrato di nuovo con lo studio dei sistemi di equazioni lineari e, poi, delle trasformazioni lineari. Purtroppo, molte delle cose che verranno stabilite, definite e spiegate qui acquisiranno un significato più profondo solo con l'introduzione di tali argomenti.
 
 \subsection{Matrici particolari}
@@ -444,7 +446,7 @@ Anche le operazioni appena definite sulle matrici rispettano le stesse propriet�
 Al contrario dei vettori, in questo caso verrà definita un'operazione di prodotto tra matrici. Tale operazione, però, non avrà la definizione che ci si può aspettare.
 
 \begin{newdef}{Prodotto riga per colonna}
-    Date due matrici $A$ $n \times m$ e $B$ $m \times s$, la matrice $AB$ sarà una matrice  $n \times s$ i cui elementi $c_{ij}$ saranno:
+    Date due matrici $A \in \mathbb{R}^{n \times m}$ e $B \in \mathbb{R}^{m \times s}$, la matrice $AB$ sarà una matrice  $n \times s$ i cui elementi $c_{ij}$ saranno:
     \[
         c_{ij} = \sum_{k = 1}^m a_{ik}b_{kj}
     \]
@@ -541,7 +543,7 @@ L'operazione di prodotto riga per colonna rispetta delle proprietà un po' diver
               $(tA)B = A(tB) = t(AB)$
 
         \item Esistenza elemento neutro: \\
-              Dato $A$ $n\times m$ $I_nA = AI_m = A$
+              Dato $A \in \mathbb{R}^{n\times m}$ $I_nA = AI_m = A$
     \end{enumerate}
 \end{teo}
 
@@ -650,7 +652,7 @@ Valgono tutte le proprietà delle potenze riguardanti il prodotto. Il concetto d
 \subsection{Trasposta di una matrice}
 Infine è utile dare la definizione di \textbf{trasposta} di una matrice.
 \begin{newdef}{Trasposta}
-    La \textbf{trasposta} di una matrice $A$ $n \times m$ è la matrice $m \times n$ le cui righe sono le colonne di $A$ e viceversa. La si indica con $A^T$, o con $\prescript{t}{}{A}$ o $A'$ in testi più vecchi.
+    La \textbf{trasposta} di una matrice $A \in \mathbb{R}^{n \times m}$ è la matrice $m \times n$ le cui righe sono le colonne di $A$ e viceversa. La si indica con $A^T$, o con $\prescript{t}{}{A}$ o $A'$ in testi più vecchi.
 \end{newdef}
 L'operazione di trasposizione di una matrice ha le seguenti proprietà:
 \begin{teo}{Proprietà della trasposta}

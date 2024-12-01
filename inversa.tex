@@ -1,1 +1,416 @@
 \chapter{Inversa di una matrice}
+\section{Definizione}
+Nell'insieme dei numeri reali ogni numero ha un inverso, ovvero:
+\[
+    \forall a \in \mathbb{R} \; \exists a^{-1} : aa^{-1} = a^{-1}a = 1
+\]
+Quindi per ogni numero reale esiste un altro numero che, moltiplicato con esso, ha come risultato 1.
+
+Ora si risolverà il problema analogo sulle matrici: avendo già definito il concetto di potenza per le matrici ha senso chiedersi se per ogni matrice quadrata esiste un'altra matrice che, quando moltiplicata, dà come risultato la matrice identità.
+
+\begin{newdef}{Matrice inversa}
+    Una matrice $A \in \mathbb{R}^{n \times n}$ è detta \textbf{invertibile} se esiste $A^{-1} \in \mathbb{R}^{n \times n}$ tale che:
+    \[
+        AA^{-1} = A^{-1}A = I_n
+    \]
+\end{newdef}
+
+Questo problema è fondamentale nel caso delle trasformazioni lineari, in quanto se la matrice associata alla trasformazione è invertibile anche la trasformazione lo sarà; a questo argomento, però, ci si arriverà a tempo debito.
+
+\section{Calcolo tramite determinante}
+Per calcolare il determinante in questo modo bisogna definire l'\textit{aggiunto classico} di una matrice.
+\begin{newdef}{Aggiunto classico}
+    L'\textbf{aggiunto classico} di una matrice $A \in \mathbb{R}^{n \times n}$ è la trasposta della matrice $C$ i cui elementi sono il complemento algebrico dei corrispondenti elementi di $A$.
+    \[
+        C =
+        \begin{sqmatrix}{c c c c}
+            A_{11} & A_{12} & \dots & A_{1n} \\
+            A_{21} & A_{22} & \dots & A_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{n1} & A_{n2} & \dots & A_{nn}
+        \end{sqmatrix}
+    \]
+    \[
+        \text{agg}\,A =
+        \begin{sqmatrix}{c c c c}
+            A_{11} & A_{21} & \dots & A_{n1} \\
+            A_{12} & A_{22} & \dots & A_{n2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1n} & A_{2n} & \dots & A_{nn}
+        \end{sqmatrix}
+    \]
+\end{newdef}
+\begin{teo}{Determinante con aggiunto classico}
+    La matrice quadrata diagonale i cui elementi non nulli sono il determinante di $A$ è data dal prodotto di $A$ con il suo aggiunto classico; questo prodotto è anche commutativo.
+    \[
+        A\,\text{agg}\,A = \text{agg}\,(A)A = \det(A)I
+    \]
+\end{teo}
+\begin{newdim}
+    Sia $A\,\text{agg}\,A = B$. Si prenda l'elemento generico $b_{ij}$ della matrice. 
+    
+    Per $i = j$ si ha:
+    \[
+        b_{ii} = a_{i1}A_{i1} + a_{i2}A_{i2} + \dots + a_{in}A_{in} =
+    \]
+    \[
+        = (-1)^{i + 1} a_{i1} \det M_{i;1} + (-1)^{i + 2} a_{i2} \det M_{i;2} + \dots + (-1)^{i + n} a_{in} \det M_{i;n} = 
+    \]
+    \[
+        = \sum_{j = 1}^{n} a_{ij} \det M_{i;j} = \det A
+    \]
+
+    Per $i \neq j$ la questione è più complessa. Formalmente si ha:
+    \[
+        b_{ij} = a_{i1}A_{j1} + a_{i2}A_{j2} + \dots + a_{in}A_{jn} =
+    \]
+    \[
+        = (-1)^{j + 1} a_{i1} \det M_{j;1} + (-1)^{j + 2} a_{i2} \det M_{j;2} + \dots + (-1)^{j + n} a_{in} \det M_{j;n}
+    \]
+    Questa può essere vista come lo sviluppo di Laplace del determinante di una matrice con due righe uguali, e perciò vale 0.
+
+    Per poter intuirlo meglio si prenda il caso $3 \times 3$:
+    \[
+        A = 
+        \begin{sqmatrix}{c c c}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{23} & a_{33}
+        \end{sqmatrix}
+    \]
+    I complementi algebrici $A_{11}, A_{12}, A_{13}$ sono rispettivamente:
+    \[
+        A_{11} = \det
+        \begin{sqmatrix}{c c}
+            a_{22} & a_{23} \\
+            a_{32} & a_{33}
+        \end{sqmatrix}
+        \quad
+        A_{12} = \det
+        \begin{sqmatrix}{c c}
+            a_{21} & a_{23} \\
+            a_{31} & a_{33}
+        \end{sqmatrix}
+        \quad
+        A_{13} = \det
+        \begin{sqmatrix}{c c}
+            a_{21} & a_{22} \\
+            a_{31} & a_{32}
+        \end{sqmatrix}
+    \]
+    Il secondo elemento di $B$ sarà dato da:
+    \[
+        a_{21}\det
+        \begin{sqmatrix}{c c}
+            a_{22} & a_{23} \\
+            a_{32} & a_{33}
+        \end{sqmatrix}
+        -
+        a_{22}\det
+        \begin{sqmatrix}{c c}
+            a_{21} & a_{23} \\
+            a_{31} & a_{33}
+        \end{sqmatrix}
+        +
+        a_{33}\det
+        \begin{sqmatrix}{c c}
+            a_{21} & a_{22} \\
+            a_{31} & a_{32}
+        \end{sqmatrix}
+    \]
+    (nb. il $(-1)^{i+j}$ è già stato preso in considerazione). Questo può essere visto come lo sviluppo di Laplace sulla prima riga di un'altra matrice, che verrà chiamata $M$. I complementi algebrici rispetto alla prima riga sono uguali a quelli di $A$, quindi le prime due righe saranno le stesse:
+    \[
+        M = 
+        \begin{sqmatrix}{c c c}
+            * & * & * \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{23} & a_{33}
+        \end{sqmatrix}
+    \]
+    I coefficienti dello sviluppo di Laplace sono $a_{21}, a_{22}, a_{23}$, quindi questi saranno gli elementi della prima riga:
+    \[
+        M = 
+        \begin{sqmatrix}{c c c}
+            a_{21} & a_{22} & a_{23} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{23} & a_{33}
+        \end{sqmatrix}
+    \]
+    Avendo due righe uguali, si avrà che $\det M = 0$, e perciò ogni elemento della matrice $B$ che non si trova sulla diagonale principale sarà nullo.
+    
+    \hfill$\qedwhite$
+\end{newdim}
+
+Usando l'identità appena dimostrata è possibile trovare la formula per l'inversa della matrice tramite i seguenti passaggi:
+\[
+    \text{agg}\,(A)A = \det(A)I
+\]
+\[
+    \frac{\text{agg}\,A}{\det A}A = I
+\]
+\[
+    \frac{\text{agg}\,A}{\det A} = A^{-1}
+\]
+Per cui:
+
+\begin{teo}{Formula dell'inversa con il determinante}
+    L'inversa della matrice $A$ è data dal rapporto tra il suo aggiunto classico e il suo determinante:
+    \[
+        A^{-1} = \frac{\text{agg}\,A}{\det A}
+    \]
+\end{teo}
+Questa formula implica direttamente il seguente criterio:
+\begin{teo}{Criterio di invertibilità (1)}
+    Una matrice è \textbf{invertibile} se e solo se il suo determinante non è nullo.
+    \[
+        \exists\,A^{-1} \iff \det A \neq 0
+    \]
+\end{teo}
+\begin{esempio}
+    \textbf{Determinare se la seguente matrice è invertibile e, in tal caso, calcolarne l'inversa.}
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            1 & 0 & 1 \\
+            1 & 1 & 1 \\
+            1 & 1 & 0
+        \end{sqmatrix}
+    \]
+    Tramite la regola di Sarrus si trova che:
+    \[
+        \det A = 0 + 0 + 1 - 1 - 1 - 0 = -1 \neq 0
+    \]
+    La matrice $A$ è invertibile.
+
+    Per trovarne l'inversa si deve trovare l'aggiunto classico di $A$.
+    \[
+        \text{agg}\,A =
+        \begin{sqmatrix}{c c c}
+            A_{11} & A_{21} & A_{31} \\
+            A_{12} & A_{22} & A_{32} \\
+            A_{13} & A_{23} & A_{33}
+        \end{sqmatrix}
+    \]
+    
+    \[
+        A_{11} = \left|
+        \begin{array}{c c}
+            1 & 1 \\
+            1 & 0
+        \end{array}
+        \right|
+        = -1
+        \quad
+        A_{12} = -\left|
+        \begin{array}{c c}
+            1 & 1 \\
+            1 & 0
+        \end{array}
+        \right|
+        = 1
+        \quad
+        A_{13} = \left|
+        \begin{array}{c c}
+            1 & 1 \\
+            1 & 1
+        \end{array}
+        \right|
+        = 0
+    \]
+    \[
+        A_{21} = -\left|
+        \begin{array}{c c}
+            0 & 1 \\
+            1 & 0
+        \end{array}
+        \right|
+        = 1
+        \quad
+        A_{22} = \left|
+        \begin{array}{c c}
+            1 & 1 \\
+            1 & 0
+        \end{array}
+        \right|
+        = -1
+        \quad
+        A_{23} = -\left|
+        \begin{array}{c c}
+            1 & 0 \\
+            1 & 1
+        \end{array}
+        \right|
+        = -1
+    \]
+
+    \[
+        A_{31} = \left|
+        \begin{array}{c c}
+            0 & 1 \\
+            1 & 1
+        \end{array}
+        \right|
+        = -1
+        \quad
+        A_{32} = -\left|
+        \begin{array}{c c}
+            1 & 1 \\
+            1 & 1
+        \end{array}
+        \right|
+        = 0
+        \quad
+        A_{33} = \left|
+        \begin{array}{c c}
+            1 & 0 \\
+            1 & 1
+        \end{array}
+        \right|
+        = 1
+    \]
+    
+    \[
+        \text{agg}\,A =
+        \begin{sqmatrix}{c c c}
+            -1 & 1 & -1 \\
+            1 & -1 & 0 \\
+            0 & -1 & 1
+        \end{sqmatrix}
+    \]
+    Dividendo per il determinante si ottiene la matrice inversa:
+    \[
+        A^{-1} =
+        \begin{sqmatrix}{c c c}
+            1 & -1 & 1 \\
+            -1 & 1 & 0 \\
+            0 & 1 & -1
+        \end{sqmatrix}
+    \]
+\end{esempio}
+
+\begin{exer}
+    \textbf{Determinare se le seguenti matrici sono invertibili e, in tal caso, calcolarne l'inversa:}
+    
+    $
+        \begin{sqmatrix}{c c c}
+            6 & 4 & 0 \\
+            6 & 5 & 6 \\
+            6 & 1 & 7
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            4 & 2 & 2 \\
+            1 & 0 & 1 \\
+            6 & 0 & 4
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c c}
+            3 & 4 & 5 & 1 \\
+            3 & 1 & 1 & 3 \\
+            5 & 4 & 2 & 0 \\
+            -7 & -8 & 4 & 14
+        \end{sqmatrix}
+    $;
+\end{exer}
+
+\section{Calcolo tramite Gauss-Jordan}
+Un altro metodo, che richiede meno calcoli per matrici più grandi, è quello di affiancare a destra della propria matrice la matrice identità e provare a portarla, attraverso operazioni elementari, a sinistra. Ovvero:
+\begin{teo}{Calcolo dell'inversa con Gauss-Jordan}
+    Affiancando a destra della matrice $A \in \mathbb{R}^{n \times n}$ la matrice identità $I_n$ e applicando il metodo di eliminazione di Gauss-Jordan si ottiene, al posto di $I$, $A^{-1}$.
+    \[
+        (A|I_n) \sim (I_n|A^{-1})
+    \]
+\end{teo}
+Evidentemente il tutto può funzionare se e solo se nell'algoritmo non si ottengono righe di zeri, ovvero se e solo se ogni colonna di $A$ ha un pivot.
+\begin{teo}{Criterio di invertibilità (2)}
+    Una matrice è \textbf{invertibile} se e solo se la sua forma a gradini ridotta è uguale alla matrice identità.
+    \[
+        \exists\,A^{-1} \iff \text{rref}\,A = I_n
+    \]
+\end{teo}
+\begin{esempio}
+    \textbf{Determinare se la seguente matrice è invertibile e, in tal caso, calcolarne l'inversa:}
+    \[
+        A =
+        \begin{sqmatrix}{c c c}
+            4 & 7 & 2 \\
+            0 & 2 & 2 \\
+            4 & 1 & 4
+        \end{sqmatrix}
+    \]
+    Si affianca ad $A$ la matrice identità, ottenendo:
+    \[
+        (A|I) =
+        \begin{sqmatrix}{c c c c c c}
+            4 & 7 & 2 & 1 & 0 & 0 \\
+            0 & 2 & 2 & 0 & 1 & 0 \\
+            4 & 1 & 4 & 0 & 0 & 1
+        \end{sqmatrix}
+    \]
+    Facendo le seguenti operazioni elementari di riga ci si porta ad avere la seguente matrice:
+    \begin{enumerate}
+        \item $R_2 \leftrightharpoons R_3$
+        \item $R_2 = R_1 - R_2$
+        \item $R_3 = R_2 - 3 \cdot R_3$
+        \item $R_2 = 4 \cdot R_2 - R_3$
+        \item $R_1 = 4 \cdot R_1 + R_3$
+        \item $R_1 = 6 \cdot R_1 - 7 \cdot R_2$
+        \item $R_1 = \frac{R_1}{96}$
+        \item $R_2 = \frac{R_2}{24}$
+        \item $R_3 = -\frac{R_3}{8}$
+    \end{enumerate}
+    \[
+        \begin{sqmatrix}{c c c c c c}
+            4 & 7 & 2 & 1 & 0 & 0 \\
+            0 & 2 & 2 & 0 & 1 & 0 \\
+            4 & 1 & 4 & 0 & 0 & 1
+        \end{sqmatrix}
+        \sim
+        \begin{sqmatrix}{c c c c c c}
+            1 & 0 & 0 & \frac{3}{32} & -\frac{13}{32} & \frac{5}{32} \\[2pt]
+            0 & 1 & 0 & \frac{1}{8} & \frac{1}{8} & -\frac{1}{8} \\[2pt]
+            0 & 0 & 1 & -\frac{1}{8} & \frac{3}{8} & \frac{1}{8}
+        \end{sqmatrix}
+        = (I|A^{-1})
+    \]
+    Dato che le prime tre colonne della forma a gradini ridotta hanno un pivot la matrice è invertibile e l'inversa è:
+    \[
+        A^{-1} =
+        \begin{sqmatrix}{c c c}
+            \frac{3}{32} & -\frac{13}{32} & \frac{5}{32} \\[2pt]
+            \frac{1}{8} & \frac{1}{8} & -\frac{1}{8} \\[2pt]
+            -\frac{1}{8} & \frac{3}{8} & \frac{1}{8}
+        \end{sqmatrix}
+    \]
+\end{esempio}
+\begin{exer}
+    \textbf{Determinare se le seguenti matrici sono invertibili e, in tal caso, calcolarne l'inversa:}
+    
+    $
+        \begin{sqmatrix}{c c c}
+            4 & 1 & 0 \\
+            7 & 7 & 6 \\
+            4 & 7 & 1
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            3 & 0 & 5 \\
+            6 & 1 & 6 \\
+            0 & 6 & 6
+        \end{sqmatrix}
+    $;
+
+    $
+        \begin{sqmatrix}{c c c}
+            1 & 1 & 2 \\
+            6 & 4 & 3 \\
+            4 & 4 & 4
+        \end{sqmatrix}
+    $;
+\end{exer}

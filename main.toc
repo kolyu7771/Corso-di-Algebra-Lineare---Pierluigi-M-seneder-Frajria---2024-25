@@ -32,3 +32,6 @@
 \contentsline {subsection}{\numberline {3.5.2}Una sola soluzione}{38}{}%
 \contentsline {subsection}{\numberline {3.5.3}Infinite soluzioni}{39}{}%
 \contentsline {chapter}{\numberline {4}Inversa di una matrice}{41}{}%
+\contentsline {section}{\numberline {4.1}Definizione}{41}{}%
+\contentsline {section}{\numberline {4.2}Calcolo tramite determinante}{41}{}%
+\contentsline {section}{\numberline {4.3}Calcolo tramite Gauss-Jordan}{44}{}%
