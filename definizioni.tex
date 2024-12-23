@@ -126,7 +126,6 @@
 {\left[\begin{array}{c}}
 {\end{array}\right]}
   
-\newcommand{\tikzextstart}{\tikzset{external/export=true}\begin{tikzpicture}}
-\newcommand{\tikzextend}{\end{tikzpicture}\tikzset{external/export=false}}
+\newenvironment{exttikzpicture}{\tikzset{external/export=true}\begin{tikzpicture}}{\end{tikzpicture}\tikzset{external/export=false}}
 
 \newcommand{\qedwhite}{\hfill\square}

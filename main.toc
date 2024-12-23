@@ -35,3 +35,9 @@
 \contentsline {section}{\numberline {4.1}Definizione}{41}{}%
 \contentsline {section}{\numberline {4.2}Calcolo tramite determinante}{41}{}%
 \contentsline {section}{\numberline {4.3}Calcolo tramite Gauss-Jordan}{44}{}%
+\contentsline {chapter}{\numberline {5}Vettori fisici}{47}{}%
+\contentsline {section}{\numberline {5.1}Definizione}{47}{}%
+\contentsline {section}{\numberline {5.2}Somma e prodotto con scalare}{48}{}%
+\contentsline {subsection}{\numberline {5.2.1}Somma - Legge di Galileo}{48}{}%
+\contentsline {subsection}{\numberline {5.2.2}Somma - Regola del parallelogramma}{48}{}%
+\contentsline {subsection}{\numberline {5.2.3}Prodotto con scalare}{49}{}%

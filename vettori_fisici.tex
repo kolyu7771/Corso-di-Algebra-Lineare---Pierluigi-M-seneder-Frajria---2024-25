@@ -1,0 +1,104 @@
+\chapter{Vettori fisici}
+Uno dei modi migliori di visualizzare i concetti spiegati nelle prossime parti è quello geometrico: se si è già studiata una materia come Fisica, si sarà già familiari con i vettori come ``frecce nello spazio'', ma è utile reintrodurre questi concetti e porre le basi della visualizzazione dei concetti dell'Algebra Lineare con l'uso dei vettori fisici.
+
+\section{Definizione}
+\begin{newdef}{Vettore fisico}
+    Un \textbf{vettore fisico} è definito da 3 caratteristiche:
+    \begin{enumerate}
+        \item \textbf{Norma:} la sua lunghezza; è anche chiamata intensità;
+        \item \textbf{Direzione:} la retta su cui giace;
+        \item \textbf{Verso:} dove sta puntando.
+    \end{enumerate}
+\end{newdef}
+
+Definendo il punto di partenza e il punto d'arrivo del vettore è possibile rappresentarlo come un segmento orientato:
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}
+        \node at (0,0) (P) {$P$};
+        \node at (5,2) (Q) {$Q$};
+        \draw[-Latex] (P) -- (Q);
+    \end{tikzpicture}
+    \tikzset{external/export = false}
+\end{center}
+\begin{nb}
+    Il vettore nullo è rappresentato dal segmento orientato $\vec{PP}$.
+\end{nb}
+Questo segmento orientato è anche chiamato \textit{vettore libero}. Questo perché è possibile disegnare più segmenti orientati che descrivono lo stesso vettore, ovvero che hanno stessa norma, direzione e verso.
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (5,2);
+        \draw[-Latex] (1,-2) -- (6,0);
+        \draw[-Latex] (-2,1) -- (3,3);
+    \end{tikzpicture}
+    \tikzset{external/export = false}
+\end{center}
+Questi segmenti sono detti equipollenti.
+\begin{newdef}{Equipollenza}
+    Due segmenti orientati sono detti \textbf{equipollenti} se collegano due coppie di punti diverse e hanno stessa norma, direzione e verso.
+
+    Un vettore libero è la \textbf{classe di equipollenza} di tutti i segmenti orientati che lo rappresentano.
+\end{newdef}
+
+\section{Somma e prodotto con scalare}
+Le operazioni di somma e prodotto con scalare sono sempre le stesse e seguono le solite proprietà, ma è necessario comprendere come vengono svolte con i vettori liberi.
+\subsection{Somma - Legge di Galileo}
+Il primo modo di sommare i vettori liberi è la legge di Galileo:
+\[
+    \vec{PQ} + \vec{QR} = \vec{PR}
+\]
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node [left] {$P$} -- (3,3) node [above] {$Q$};
+        \draw[-Latex] (3,3) -- (5,1) node [right] {$R$};
+        \draw[Green, -Latex] (0,0) -- (5,1);
+    \end{tikzpicture}
+    \tikzset{external/export = false}
+\end{center}
+\begin{teo}{Legge di Galileo}
+    Per calcolare la somma di due vettori liberi con la \textbf{legge di Galileo} basta porre la coda del secondo vettore sulla testa del primo vettore e, per trovare il vettore somma, bisogna collegare la coda del primo vettore alla testa del secondo vettore.
+\end{teo}
+
+\subsection{Somma - Regola del parallelogramma}
+Un modo alternativo di esprimere lo stesso concetto è tramite la regola del parallelogramma:
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[left] {$P$} -- (3,3) node[above] {$Q$};
+        \draw[-Latex] (0,0) -- (2,-1) node[below] {$S$};
+        \draw[Blue, -Latex] (3,3) -- (5,2) node[right] {$R$};
+        \draw[Blue, -Latex] (2,-1) -- (5,2);
+        \draw[Green, -Latex] (0,0) -- (5,2);
+    \end{tikzpicture}
+    \tikzset{external/export = true}
+\end{center}
+\[
+    \vec{PQ} + \vec{PS} = \vec{PR}
+\]
+\begin{teo}{Regola del parallelogramma}
+    Per calcolare la somma di due vettori liberi con la \textbf{regola del parallelogramma}: si fanno coincidere le code dei due vettori; si duplica il primo vettore sulla testa del secondo e viceversa; le due teste si incontreranno nello stesso punto; collegando le code in comune e le teste in comune si otterrà il vettore somma.
+\end{teo}
+
+I due metodi sono totalmente equivalenti.
+
+\subsection{Prodotto con scalare}
+Con i vettori liberi il prodotto con scalare influisce sulla norma e su verso del vettore. In particolare:
+\begin{teo}{Prodotto con scalare}
+    Il \textbf{prodotto con scalare} sui vettori liberi è svolto nel seguente modo:
+    \begin{itemize}
+        \item \textbf{Norma:} Moltiplicata per il modulo del numero reale moltiplicato;
+        \item \textbf{Direzione: } Invariata;
+        \item \textbf{Verso: } Cambia se e solo se il numero con cui il vettore è moltiplicato è negativo
+    \end{itemize}
+\end{teo}
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- node[above left]{$\vec v$} (1,1);
+        \draw[-Latex] (1,0) -- node[above left]{$2\vec v$} (3,2);
+        \draw[-Latex] (4,1) -- node[above left]{$-\vec v$} (3,0); 
+    \end{tikzpicture}
+    \tikzset{external/export = false}
+\end{center}
