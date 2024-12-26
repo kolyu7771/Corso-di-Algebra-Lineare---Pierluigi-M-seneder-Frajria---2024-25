@@ -102,3 +102,86 @@ Con i vettori liberi il prodotto con scalare influisce sulla norma e su verso de
     \end{tikzpicture}
     \tikzset{external/export = false}
 \end{center}
+
+\section{Sistemi di assi cartesiani}
+Spesso, per poter lavorare in maniera efficace con vettori ed elementi geometrici, è utile avere un \textit{sistema di riferimento}: fin dalle elementari si utilizza come sistema di riferimento quello \textbf{cartesiano}.
+
+\begin{newdef}{Sistema di riferimento cartesiano}
+    Il \textbf{sistema di riferimento cartesiano} è un sistema di riferimento che è caratterizzato da degli assi ortogonali tra loro. Il punto in cui si intersecano gli assi è detta \textbf{origine} degli assi.
+\end{newdef}
+\begin{center}
+    \begin{minipage}{0.4\linewidth}
+        \tikzset{external/export = true}
+        \begin{tikzpicture}
+            \draw[-Latex] (0,0) -- (3,0) node[below] {$x$};
+            \draw[-Latex] (0,0) -- (0,3) node[left] {$y$};
+        \end{tikzpicture}
+        \tikzset{external/export = false}
+        \centering
+        Sistema cartesiano per il piano
+    \end{minipage}
+    \begin{minipage}{0.4\linewidth}
+        \tikzset{external/export = true}
+        \begin{tikzpicture}[tdplot_main_coords]
+            \draw[-Latex] (0,0,0) -- (3,0,0) node[above left] {$x$};
+            \draw[-Latex] (0,0,0) -- (0,3,0) node[above] {$y$};
+            \draw[-Latex] (0,0,0) -- (0,0,3) node[left] {$z$};
+        \end{tikzpicture}
+        \tikzset{external/export = false}
+        \centering
+        Sistema cartesiano per lo spazio
+    \end{minipage}
+\end{center}
+Per definire le direzioni degli assi si prendono in considerazione i cosiddetti \textbf{versori}.
+\begin{newdef}{Versori}
+    I \textbf{versori} sono dei vettori di norma unitaria che definiscono le direzioni e il verso degli assi.
+
+    Per convenzione $\vec i$ è il versore dell'asse $x$, $\vec j$ è il versore dell'asse $y$ e $\vec k$ è il versore dell'asse $z$.
+\end{newdef}
+\begin{center}
+    \begin{minipage}{0.4\linewidth}
+        \tikzset{external/export = true}
+        \begin{tikzpicture}
+            \draw[-Latex] (0,0) -- (3,0) node[below] {$x$};
+            \draw[Blue, thick,-Latex] (0,0) -- (1,0) node[below] {$\vec i$};
+            \draw[-Latex] (0,0) -- (0,3) node[left] {$y$};
+            \draw[Blue, thick,-Latex] (0,0) -- (0,1) node[left] {$\vec j$};
+        \end{tikzpicture}
+        \tikzset{external/export = false}
+    \end{minipage}
+    \begin{minipage}{0.4\linewidth}
+        \tikzset{external/export = true}
+        \begin{tikzpicture}[tdplot_main_coords]
+            \draw[-Latex] (0,0,0) -- (3,0,0) node[above left] {$x$};
+            \draw[Blue, thick,-Latex] (0,0,0) -- (1,0,0) node[above left] {$\vec i$};
+            \draw[-Latex] (0,0,0) -- (0,3,0) node[above] {$y$};
+            \draw[Blue, thick,-Latex] (0,0,0) -- (0,1,0) node[above] {$\vec j$};
+            \draw[-Latex] (0,0,0) -- (0,0,3) node[left] {$z$};
+            \draw[Blue, thick,-Latex] (0,0,0) -- (0,0,1) node[left] {$\vec k$};
+        \end{tikzpicture}
+        \tikzset{external/export = false}
+    \end{minipage}
+\end{center}
+
+La comodità del sistema cartesiano è che ogni 2-vettore può essere espresso in maniera diretta come una combinazione lineare tra i versori. Infatti:
+\begin{teo}{Vettori nel sistema cartesiano}
+    L'$n$-vettore $\vec v$, nel sistema cartesiano, può essere espresso come combinazione lineare dei versori usando le sue componenti come scalare da moltiplicare ai versori.
+    \[
+        \vec v = (x,y,z) = x\vec i + y\vec j + z\vec k
+    \] 
+\end{teo}
+\begin{center}
+    \tikzset{external/export = true}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \draw[-Latex] (0,0,0) -- (5,0,0) node[above left] {$x$};
+        \draw[-Latex] (0,0,0) -- (0,5,0) node[above] {$y$};
+        \draw[-Latex] (0,0,0) -- (0,0,5) node[left] {$z$};
+        \draw[Purple, -Latex] (0,0,0) -- (3,2,4) node[right]{$\vec v$};
+        \draw[Purple, dashed] (3,2,4) -- (3,2,0) (3,2,4) -- (0,0,4) (3,2,0) -- (3,0,0) (3,2,0) -- (0,2,0);
+        \draw[Red, -Latex] (0,0,0) -- node[above left]{$x\vec i$} (3,0,0);
+        \draw[Green, -Latex] (0,0,0) -- node[above]{$y\vec j$} (0,2,0);
+        \draw[Blue, -Latex] (0,0,0) -- node[left]{$z\vec k$} (0,0,4);
+    \end{tikzpicture}
+    \tikzset{external/export = false}
+\end{center}
+Con questa nuova comprensione dei vettori, è possibile verificare che la somma di $n$-vettori e di vettori liberi è completamente equivalente.

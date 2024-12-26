@@ -925,3 +925,87 @@ Quando si parla di soluzioni di un sistema indeterminato, è importante notare c
 \begin{nb}
     Nella forma a gradini, la matrice dei coefficienti avrà almeno una colonna senza pivot: a quelle colonne corrispondono le variabili libere.
 \end{nb}
+
+\subsection{Relazione tra soluzione di un sistema e del sistema omogeneo associato}
+Si prendano in considerazione i seguenti sistemi lineari:
+\[
+    \begin{cases}
+        2x + 4y - 3z = 3 \\
+        x + 2y + z = 2 \\
+        8x + 16y - 22z = 10 \\
+    \end{cases}
+    \begin{cases}
+        2x + 4y - 3z = 0 \\
+        x + 2y + z = 0 \\
+        8x + 16y - 22z = 0 \\
+    \end{cases}
+\]
+
+I due sistemi hanno apparentemente la stessa matrice dei coefficienti, ma uno dei due ha dei termini noti non nulli. Avendo la stessa matrice dei coefficienti, l'unica differenza nella forma ridotta delle due matrici sarà l'ultima colonna:
+\[
+    \begin{sqmatrix}{c c c c}
+        1 & 2 & 0 & \frac{9}{5} \\
+        0 & 0 & 1 & \frac{1}{5} \\
+        0 & 0 & 0 & 0 \\  
+    \end{sqmatrix}
+    \begin{sqmatrix}{c c c c}
+        1 & 2 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 \\  
+    \end{sqmatrix}
+\]
+\[
+    \textbf{x}_1 =
+    \begin{sqcolvec}
+        x \\ y \\ z
+    \end{sqcolvec}
+    =
+    \begin{sqcolvec}
+        \frac{9}{5} \\ 0 \\ \frac{1}{5}
+    \end{sqcolvec}
+    +
+    y
+    \begin{sqcolvec}
+        -2 \\ 1 \\ 0
+    \end{sqcolvec}
+    \quad
+    \textbf{x}_2 =
+    \begin{sqcolvec}
+        x \\ y \\ z
+    \end{sqcolvec}
+    =
+    y
+    \begin{sqcolvec}
+        -2 \\ 1 \\ 0
+    \end{sqcolvec}
+\]
+Anche le soluzioni sono molto simili: infatti la soluzione del sistema omogeneo è presente nella soluzione del sistema non omogeneo, benché sommata a un altro vettore.
+
+Quello presentato non è un caso particolare, ma questa relazione tra un sistema e il suo sistema omogeneo associato è valida per qualunque sistema lineare.
+\begin{teo}{Soluzione particolare + omogenea}
+    Dato il sistema $A\textbf{x} = \textbf{b}$ si può esprimere l'insieme delle sue soluzioni come l'insieme delle soluzioni del sistema omogeneo $A\textbf{x} = \vec 0$ sommato a una soluzione particolare.
+    \[
+        \text{Sol}\,(A,\textbf{b}) = \textbf{x}_{\text{part}} + \text{Sol}\,(A,\vec 0)
+    \]
+\end{teo}
+\begin{newdim}
+    Si considerino $y \in \textbf{Sol}\,(A,\vec 0)$, ovvero $Ay = \vec 0$, e $\textbf{x}_\text{part} \in \textbf{Sol}\,{A,\textbf{b}}$, ovvero $A\textbf{x}_{part} = \textbf{b}$.
+
+    Calcolando il sistema per $\textbf{x}_\text{part} + y$ si ottiene:
+    \[
+        A(\textbf{x}_\text{part} + y) = A\textbf{x}_\text{part} + Ay = \textbf{b} + \vec 0 = \textbf{b}
+    \]
+    Quindi la somma con una soluzione del sistema omogeneo continua ad essere soluzione del sistema non omogeneo. Perciò è lecito concludere che, avendo una soluzione del sistema lineare non omogeneo, aggiungere una soluzione del sistema omogeneo mantiene il risultato nell'insieme $\text{Sol}\,(A,\textbf{b})$.
+
+    Si consideri ora $\textbf{x}' \in \textbf{Sol}\,(A,\textbf{b})$. Allora si ha $y = \textbf{x}' - \textbf{x}_\text{part}$. Infatti:
+    \[
+        Ay = A(\textbf{x}' - \textbf{x}_\text{part}) = A\textbf{x}' - A\textbf{x}_\text{part} = \textbf{b} - \textbf{b} = \vec 0
+    \]
+    Perciò due soluzioni del sistema non omogeneo differiscono di una soluzione del sistema omogeneo. Perciò:
+    \[
+        \textbf{x}' = \textbf{x}_\text{part} + y
+    \]
+    ovvero ogni soluzione può essere espressa come la somma tra una soluzione particolare del sistema non omogeneo e una soluzione del sistema omogeneo, che è esattamente la tesi proposta.
+    
+    $\hfill\qedwhite$
+\end{newdim}
